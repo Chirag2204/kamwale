@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://admin-chirag:chirag2204@cluster0.loj7j.mongodb.net/kamwale?retryWrites=true&w=majority",
+  "jwtSecret": "jwtsecrettoken"
+}
