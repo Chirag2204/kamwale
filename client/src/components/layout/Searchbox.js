@@ -1,16 +1,22 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
-const Searchbox = ({history}) => {
+const Searchbox = ({ history }) => {
   const [keyword, setKeyword] = useState('');
+  const [keywordCity, setKeywordCity] = useState('');
 
   const submitHandler = (e) => {
     e.preventDefault();
     if (keyword.trim()) {
+      if (keywordCity.trim()) {
+        history.push(`/search/${keyword}/${keywordCity}`);
+        return
+      }
       history.push(`/search/${keyword}`);
     } else {
       history.push('/');
     }
   };
+  console.log(keywordCity);
 
   return (
     <form class='form search' onSubmit={submitHandler}>
@@ -36,6 +42,18 @@ const Searchbox = ({history}) => {
           <option value='Catering Services'>Catering Services</option>
           <option value='Other'>Other</option>
         </select>
+
+
+        <div className='form-group'>
+          <select name='location' value={keywordCity} onChange={(e) => setKeywordCity(e.target.value)}>
+            <option value='' className='text-dark'>
+              City
+            </option>
+            <option value='Indore'>Indore</option>
+            <option value='Pune'>Pune</option>
+            <option value='Bangalore'>Bangalore</option>
+          </select>
+        </div>
       </div>
       <input type='submit' className='btn btn-primary my-1' />
     </form>

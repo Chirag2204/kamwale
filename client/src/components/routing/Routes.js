@@ -14,28 +14,29 @@ import PrivateRoute from '../routing/PrivateRoute';
 import { Route, Switch } from 'react-router-dom';
 
 const Routes = () => {
-    return (
-      <section className='container'>
-        <Alert />
-        <Switch>
-          <Route exact path='/register' component={Register} />
-          <Route exact path='/login' component={Login} />
-          <Route exact path='/decision' component={Decision} />
-          <Route exact path='/profiles' component={Profiles} />
-          <Route path='/search/:keyword' component={Profiles} />
-          <Route exact path='/profile/:id' component={Profile} />
-          <PrivateRoute exact path='/dashboard' component={Dashboard} />
-          <PrivateRoute
-            exact
-            path='/create-profile'
-            component={CreateProfile}
-          />
-          <PrivateRoute exact path='/edit-profile' component={EditProfile} />
-          <PrivateRoute exact path='/add-education' component={AddEducation} />
-          <Route component={NotFound} />
-        </Switch>
-      </section>
-    );
+  return (
+    <section className='container'>
+      <Alert />
+      <Switch>
+        <Route exact path='/register' component={Register} />
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/decision' component={Decision} />
+        <Route exact path='/profiles' component={Profiles} />
+        <Route path='/search/:keyword/:city' component={Profiles} />
+        <Route path='/search/:keyword' component={Profiles} />
+        <Route exact path='/profile/:id' component={Profile} />
+        <PrivateRoute exact path='/dashboard' component={Dashboard} />
+        <PrivateRoute
+          exact
+          path='/create-profile'
+          component={CreateProfile}
+        />
+        <PrivateRoute exact path='/edit-profile' component={EditProfile} />
+        <PrivateRoute exact path='/add-education' component={AddEducation} />
+        <Route component={NotFound} />
+      </Switch>
+    </section>
+  );
 }
 
 export default Routes

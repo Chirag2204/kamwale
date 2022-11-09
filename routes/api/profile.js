@@ -4,6 +4,7 @@ const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
+const { VapingRoomsRounded } = require('@mui/icons-material');
 
 // @route    GET api/profile/me
 // @desc     Get current users profile
@@ -103,13 +104,22 @@ router.post(
 // @access   Public
 router.get('/', async (req, res) => {
   try {
-    const keyword = req.query.keyword?{
-      skills:{
+    var keyword = req.query.keyword ? {
+      skills: {
         $regex: req.query.keyword,
         $options: 'i'
       }
-    }: {}
-    const profiles = await Profile.find({...keyword}).populate('user', ['name', 'avatar']);
+    } : {}
+    if (req.query.city) {
+      keyword = {
+        ...keyword,
+        location: {
+          $regex: req.query.city,
+          $options: 'i'
+        }
+      }
+    }
+    const profiles = await Profile.find({ ...keyword }).populate('user', ['name', 'avatar']);
     res.json(profiles);
   } catch (err) {
     console.error(err.message);
@@ -143,7 +153,7 @@ router.get('/user/:user_id', async (req, res) => {
 // @access   Private
 router.post('/user/:user_id/reviews', auth, async (req, res) => {
   try {
-    const {name, rating, comment } = req.body;
+    const { name, rating, comment } = req.body;
 
     const profile = await Profile.findOne({
       user: req.params.user_id,
@@ -157,7 +167,7 @@ router.post('/user/:user_id/reviews', auth, async (req, res) => {
       if (alreadyReviewed) {
         res.status(400).json({ msg: 'This seller is already reviewed' });
       }
-      else{
+      else {
         const review = {
           name,
           rating: Number(rating),
@@ -176,7 +186,7 @@ router.post('/user/:user_id/reviews', auth, async (req, res) => {
         await profile.save();
         res.status(201).json({ msg: 'Review added' });
       }
-      
+
     } else {
       res.status(404);
       throw new Error('Profile not found');

@@ -3,15 +3,15 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import ProfileItem from './ProfileItem';
 import { getProfiles, getCurrentProfile } from '../../actions/profile';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const Profiles = ({ getProfiles, getCurrentProfile, profile: { profile, profiles, loading }, match }) => {
 
-  const keyword = match.params.keyword;
-
+  const { keyword, city } = match.params;
   useEffect(() => {
-    getProfiles(keyword);
+    getProfiles(keyword, city);
     getCurrentProfile();
-  }, [getProfiles, keyword, getCurrentProfile]);
+  }, [getProfiles, keyword, getCurrentProfile, city]);
 
   return (
     <Fragment>
