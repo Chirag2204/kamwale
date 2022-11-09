@@ -104,22 +104,24 @@ router.post(
 // @access   Public
 router.get('/', async (req, res) => {
   try {
-    var keyword = req.query.keyword ? {
+    const city = req.query.city ? {
+      location: {
+        $regex: req.query.city,
+        $options: 'i'
+      }
+    } : {}
+    const keyword = req.query.keyword ? {
       skills: {
         $regex: req.query.keyword,
         $options: 'i'
       }
     } : {}
-    if (req.query.city) {
-      keyword = {
-        ...keyword,
-        location: {
-          $regex: req.query.city,
-          $options: 'i'
-        }
-      }
-    }
-    const profiles = await Profile.find({ ...keyword }).populate('user', ['name', 'avatar']);
+
+    const profiles = await Profile.find({
+      verificationStatus: 'VERIFIED',
+      ...city,
+      ...keyword
+    }).populate('user', ['name', 'avatar']);
     res.json(profiles);
   } catch (err) {
     console.error(err.message);

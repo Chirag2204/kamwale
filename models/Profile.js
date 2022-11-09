@@ -42,7 +42,11 @@ const ProfileSchema = new mongoose.Schema({
   },
 
   reviews: [reviewSchema],
-
+  verificationStatus: {
+    type: String,
+    enum: ['VERIFIED', 'PENDING', 'REJECTED'],
+    default: 'PENDING'
+  },
   rating: {
     type: Number,
     required: true,
@@ -71,9 +75,11 @@ const ProfileSchema = new mongoose.Schema({
   info: {
     phone: {
       type: String,
+      // required: true,
     },
     email: {
       type: String,
+      // required: true,
     },
   },
   date: {

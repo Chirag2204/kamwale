@@ -9,8 +9,6 @@ import {
   UPDATE_PROFILE,
   ACCOUNT_DELETED,
   CREATE_REVIEW,
-  CREATE_REVIEW_FAIL,
-  RESET_REVIEW,
   PROFILE_LOADING
 } from './types';
 
@@ -18,7 +16,6 @@ import {
 export const getCurrentProfile = () => async (dispatch) => {
   try {
     const res = await axios.get('/api/profile/me');
-
     dispatch({
       type: GET_PROFILE,
       payload: res.data,
@@ -86,7 +83,7 @@ export const createProfile = (formData, history, edit = false) => async (
       payload: res.data,
     });
 
-    dispatch(setAlert(edit ? 'Profile Updated' : 'Profile Created', 'success'));
+    dispatch(setAlert(edit ? 'Profile Updated' : 'Profile Created, We will review your profile and it will verified and visible soon...', 'success'));
 
     if (!edit) {
       history.push('/dashboard');

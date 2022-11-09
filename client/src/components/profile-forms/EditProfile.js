@@ -55,6 +55,14 @@ const EditProfile = ({
   return loading ? <Spinner /> : (
     <Fragment>
       <h1 className='large text-primary text-center'>Edit Profile</h1>
+      <h2>
+        {
+          profile?.verificationStatus === 'PENDING' && <div style={{ textAlign: "center" }}>We are workgin on your profile verification</div>
+        }
+      </h2>
+      <br></br>
+      <br></br>
+      <br></br>
       <p className='text-center lead'>
         <i className='fas fa-user' /> Welcome {user && user.name}
       </p>
