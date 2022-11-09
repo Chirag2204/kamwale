@@ -10,7 +10,8 @@ import {
   ACCOUNT_DELETED,
   CREATE_REVIEW,
   CREATE_REVIEW_FAIL,
-  RESET_REVIEW
+  RESET_REVIEW,
+  PROFILE_LOADING
 } from './types';
 
 // Get current users profile
@@ -69,6 +70,9 @@ export const createProfile = (formData, history, edit = false) => async (
   dispatch
 ) => {
   try {
+    dispatch({
+      type: PROFILE_LOADING
+    })
     const config = {
       headers: {
         'Content-Type': 'application/json',
@@ -174,7 +178,7 @@ export const deleteAccount = () => async dispatch => {
 };
 
 // Create Seller Review
-export const createSellerReview = (userId, review) => async dispatch=> {
+export const createSellerReview = (userId, review) => async dispatch => {
   try {
     const config = {
       headers: {

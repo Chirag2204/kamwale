@@ -1,13 +1,13 @@
 import React, { Fragment, useState } from 'react';
-import {Link, withRouter} from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import FileBase from 'react-file-base64';
 import { connect } from 'react-redux';
-import {createProfile} from '../../actions/profile'
+import { createProfile } from '../../actions/profile'
 
 const CreateProfile = ({ createProfile, history, auth: { user } }) => {
   const [formData, setFormData] = useState({
     price: '',
-    location: '',
+    location: 'Indore',
     status: '',
     skills: '',
     bio: '',
@@ -64,7 +64,7 @@ const CreateProfile = ({ createProfile, history, auth: { user } }) => {
             onChange={(e) => onChange(e)}
           />
         </div>
-
+        {/* 
         <div className='form-group'>
           <div className='form-text'>*City (eg. Espoo, Lohja etc)</div>
           <input
@@ -73,6 +73,15 @@ const CreateProfile = ({ createProfile, history, auth: { user } }) => {
             value={location}
             onChange={(e) => onChange(e)}
           />
+        </div> */}
+
+        <div className='form-group'>
+          <div className='form-text'>*Service Location (eg. Indore, Pune, Bangalore etc)</div>
+          <select name='location' value={location} onChange={(e) => onChange(e)}>
+            <option value='Indore'>Indore</option>
+            <option value='Pune'>Pune</option>
+            <option value='Bangalore'>Bangalore</option>
+          </select>
         </div>
 
         <div className='form-group'>
@@ -135,7 +144,7 @@ const CreateProfile = ({ createProfile, history, auth: { user } }) => {
             />
           </label>
         </div>
-
+        {/* 
         <div className='text-center'>{' OR'}</div>
         <div className='form-text my-1 text-center'>Choose an avatar image</div>
         <div class='grid-container'>
@@ -196,7 +205,7 @@ const CreateProfile = ({ createProfile, history, auth: { user } }) => {
             <option value='/images/8.png'>Avatar 8</option>
             <option value='/images/9.png'>Avatar 9</option>
           </select>
-        </div>
+        </div> */}
 
         <input type='submit' className='btn btn-primary my-1' />
 
@@ -213,5 +222,5 @@ const mapStateToProps = (state) => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, {createProfile})(withRouter(CreateProfile))
+export default connect(mapStateToProps, { createProfile })(withRouter(CreateProfile))
 

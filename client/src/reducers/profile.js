@@ -1,4 +1,4 @@
-import { GET_PROFILE, PROFILE_ERROR, CLEAR_PROFILE, UPDATE_PROFILE, GET_PROFILES, CREATE_REVIEW, CREATE_REVIEW_FAIL, RESET_REVIEW, LOGOUT } from '../actions/types';
+import { GET_PROFILE, PROFILE_ERROR, CLEAR_PROFILE, UPDATE_PROFILE, GET_PROFILES, CREATE_REVIEW, CREATE_REVIEW_FAIL, RESET_REVIEW, LOGOUT, PROFILE_LOADING } from '../actions/types';
 
 const initialState = {
   profile: null,
@@ -7,10 +7,12 @@ const initialState = {
   error: {},
 };
 
-export default function profile (state = initialState, action) {
+export default function profile(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
+    case PROFILE_LOADING:
+      return { ...state, loading: true }
     case GET_PROFILE:
     case UPDATE_PROFILE:
       return {
@@ -32,7 +34,7 @@ export default function profile (state = initialState, action) {
         profile: null,
       };
     case CLEAR_PROFILE:
-      case LOGOUT:
+    case LOGOUT:
       return {
         ...state,
         profile: null,

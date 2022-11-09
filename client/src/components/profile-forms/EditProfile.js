@@ -5,6 +5,7 @@ import FileBase from 'react-file-base64';
 import { connect } from 'react-redux';
 import { createProfile, getCurrentProfile, deleteAccount } from '../../actions/profile';
 import Education from '../dashboard/Education'
+import Spinner from '../layout/Spinner';
 
 const EditProfile = ({
   profile: { profile, loading },
@@ -21,8 +22,8 @@ const EditProfile = ({
     skills: '',
     bio: '',
     phone: '',
-    email:'',
-    image:''
+    email: '',
+    image: ''
   });
 
   const [displayContactlInputs, toggleContactInputs] = useState(false);
@@ -31,13 +32,13 @@ const EditProfile = ({
     getCurrentProfile();
 
     setFormData({
-      location: loading || !profile.location ? '' : profile.location,
-      skills: loading || !profile.skills ? '' : profile.skills,
-      price: loading || !profile.price ? '' : profile.price,
-      bio: loading || !profile.bio ? '' : profile.bio,
-      phone: loading || !profile.info ? '' : profile.info.phone,
-      email: loading || !profile.info ? '' : profile.info.email,
-      image: loading || !profile.image ? '' : profile.image,
+      location: loading || !profile?.location ? '' : profile?.location,
+      skills: loading || !profile?.skills ? '' : profile?.skills,
+      price: loading || !profile?.price ? '' : profile?.price,
+      bio: loading || !profile?.bio ? '' : profile?.bio,
+      phone: loading || !profile?.info ? '' : profile?.info?.phone,
+      email: loading || !profile?.info ? '' : profile?.info?.email,
+      image: loading || !profile?.image ? '' : profile?.image,
     });
   }, [loading, getCurrentProfile]);
 
@@ -50,7 +51,8 @@ const EditProfile = ({
     e.preventDefault();
     createProfile(formData, history, true);
   };
-  return (
+  console.log(loading);
+  return loading ? <Spinner /> : (
     <Fragment>
       <h1 className='large text-primary text-center'>Edit Profile</h1>
       <p className='text-center lead'>
@@ -61,7 +63,7 @@ const EditProfile = ({
         {' '}
         <img
           class='round-img avatar-img my-1'
-          src={!image ? profile.user.avatar : image}
+          src={!image ? profile?.user?.avatar : image}
           alt='profile-image'
         />
       </div>
@@ -81,9 +83,9 @@ const EditProfile = ({
           </label>
         </div>
 
-        <div className='text-center'>{' OR'}</div>
+        {/* <div className='text-center'>{' OR'}</div> */}
 
-        <div className='form-text my-1 text-center'>Choose an avatar image</div>
+        {/* <div className='form-text my-1 text-center'>Choose an avatar image</div>
         <div class='grid-container'>
           <div class='grid-item'>
             <img className='round-img avatar-img' src='./images/1.png' alt='' />
@@ -121,10 +123,10 @@ const EditProfile = ({
             <img className='round-img avatar-img' src='./images/9.png' alt='' />
             <p>Avatar 9</p>
           </div>
-        </div>
+        </div> */}
 
         <div className='form-group'>
-          <select
+          {/* <select
             type='text'
             placeholder='Image'
             name='image'
@@ -141,7 +143,7 @@ const EditProfile = ({
             <option value='/images/7.png'>Avatar7</option>
             <option value='/images/8.png'>Avatar 8</option>
             <option value='/images/9.png'>Avatar 9</option>
-          </select>
+          </select> */}
           <div className='form-group'>
             <div className='form-text'>
               * Give us an idea of what kind of services you want to provide
@@ -174,14 +176,14 @@ const EditProfile = ({
             />
           </div>
 
+
           <div className='form-group'>
-            <div className='form-text'>*City (eg. Espoo, Lohja etc)</div>
-            <input
-              type='text'
-              name='location'
-              value={location}
-              onChange={(e) => onChange(e)}
-            />
+            <div className='form-text'>*Service Location (eg. Indore, Pune, Bangalore etc)</div>
+            <select name='location' value={location} onChange={(e) => onChange(e)}>
+              <option value='Indore'>Indore</option>
+              <option value='Pune'>Pune</option>
+              <option value='Bangalore'>Bangalore</option>
+            </select>
           </div>
 
           <div className='form-group'>
@@ -239,7 +241,7 @@ const EditProfile = ({
             </Link>
           </div>
 
-          <Education education={profile.education} />
+          <Education education={profile?.education} />
         </div>
         <input type='submit' className='btn btn-primary my-1' />
       </form>
