@@ -5,7 +5,7 @@ const { check, validationResult } = require('express-validator');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const { VapingRoomsRounded } = require('@mui/icons-material');
-const { isAdmin } = require('../../middleware/admin');
+const { isAdmin, admin } = require('../../middleware/admin');
 
 // @route    GET api/profile/me
 // @desc     Get current users profile
@@ -20,6 +20,43 @@ router.get('/me', auth, async (req, res) => {
       return res.status(400).json({ msg: 'There is no profile for this user' });
     }
     res.json(profile);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route    GET api/profile/admin/user/:id
+// @desc     Get users profile by id
+// @access   ADMIN
+
+router.get('/admin/user/:user_id', admin, async (req, res) => {
+  try {
+    const profile = await Profile.findOne({
+      user: req.params.user_id,
+    }).populate('user', ['name', 'avatar', 'isSeller']);
+
+    if (!profile) {
+      return res.status(400).json({ msg: 'There is no profile for this user' });
+    }
+    res.json(profile);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route    POST api/profile/admin/user
+// @desc     Get users profile by id
+// @access   ADMIN
+
+router.post('/admin/user', admin, async (req, res) => {
+  try {
+    await Profile.updateOne({
+      user: req.body.userId,
+    }, { verificationStatus: req.body.verificationStatus });
+
+    res.send("UPDATED");
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
@@ -79,6 +116,7 @@ router.post(
 
       if (profile) {
         // Update
+        profileFields.verificationStatus = 'PENDING'
         profile = await Profile.findOneAndUpdate(
           { user: req.user.id },
           { $set: profileFields },
@@ -107,7 +145,12 @@ router.get('/', isAdmin, async (req, res) => {
   try {
     var verificationStatus = { verificationStatus: 'VERIFIED' }
     if (req?.user?.isAdmin && req.query.verificationStatus) {
-      verificationStatus = { verificationStatus: req.query.verificationStatus }
+      if (req.query.verificationStatus === 'ALL') {
+        verificationStatus = {}
+      } else {
+        verificationStatus = { verificationStatus: req.query.verificationStatus }
+      }
+
     }
     const city = req.query.city ? {
       location: {
@@ -126,7 +169,7 @@ router.get('/', isAdmin, async (req, res) => {
       ...verificationStatus,
       ...city,
       ...keyword
-    }).populate('user', ['name', 'avatar']);
+    }).populate('user', ['name', 'avatar', 'email']);
     res.json(profiles);
   } catch (err) {
     console.error(err.message);

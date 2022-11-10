@@ -1,11 +1,15 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Spinner from '../layout/Spinner'
+import Modal from 'react-modal';
+import { ProfileModal } from './profileModal';
 
 export const AdminScreen = () => {
     const [filter, setFilter] = useState("PENDING")
     const [isLoading, setIsLoading] = useState(false)
     const [profiles, setProfiles] = useState([])
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [profileId, setProfileId] = useState(null)
     async function getProfiles() {
         setIsLoading(true)
         try {
@@ -25,7 +29,7 @@ export const AdminScreen = () => {
     return (
         <div>
             <div >
-                <div className='form-text'>*Service Location (eg. Indore, Pune, Bangalore etc)</div>
+                <div className='form-text'>Verification Status</div>
                 <select name='location' value={filter} onChange={(e) => setFilter(e.target.value)}>
                     <option value='ALL'>ALL</option>
                     <option value='VERIFIED'>VERIFIED</option>
@@ -37,9 +41,15 @@ export const AdminScreen = () => {
                 {
                     isLoading ?
                         <Spinner />
-                        : profiles.map(profile => <div>{profile.user.email}</div>)
+                        : (profiles.length === 0 ? <div>No Profile found</div> : profiles.map(profile => <div onClick={() => { setProfileId(profile.user._id); setIsModalOpen(true) }}>{profile.user.email}</div>))
                 }
             </div>
+
+            <Modal isOpen={isModalOpen} onRequestClose={() => {
+                setIsModalOpen(false)
+            }}>
+                <ProfileModal profileId={profileId} refreshFunction={getProfiles} />
+            </Modal>
         </div>
     )
 }
