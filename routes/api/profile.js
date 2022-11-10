@@ -5,6 +5,7 @@ const { check, validationResult } = require('express-validator');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const { VapingRoomsRounded } = require('@mui/icons-material');
+const { isAdmin } = require('../../middleware/admin');
 
 // @route    GET api/profile/me
 // @desc     Get current users profile
@@ -102,8 +103,12 @@ router.post(
 // @route    GET api/profile
 // @desc     Get all profiles
 // @access   Public
-router.get('/', async (req, res) => {
+router.get('/', isAdmin, async (req, res) => {
   try {
+    var verificationStatus = { verificationStatus: 'VERIFIED' }
+    if (req?.user?.isAdmin && req.query.verificationStatus) {
+      verificationStatus = { verificationStatus: req.query.verificationStatus }
+    }
     const city = req.query.city ? {
       location: {
         $regex: req.query.city,
@@ -118,7 +123,7 @@ router.get('/', async (req, res) => {
     } : {}
 
     const profiles = await Profile.find({
-      verificationStatus: 'VERIFIED',
+      ...verificationStatus,
       ...city,
       ...keyword
     }).populate('user', ['name', 'avatar']);

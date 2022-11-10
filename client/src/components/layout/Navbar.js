@@ -7,7 +7,6 @@ import { getIsAdminFromToken } from '../../utils/getAuthToken';
 const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
   const isAdmin = getIsAdminFromToken();
   const adminLinks = () => {
-    console.log("hi", isAdmin);
     if (isAdmin) return (<li>
       <Link to='/admin'>
         <i className='fas fa-user'></i>{' '}
@@ -42,6 +41,8 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
           <span className='hide-sm'>Logout</span>
         </Link>
       </li>
+      {adminLinks()}
+
     </ul>
   );
 
