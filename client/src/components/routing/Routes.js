@@ -13,7 +13,7 @@ import Dashboard from '../dashboard/dashboard';
 import PrivateRoute from '../routing/PrivateRoute';
 import { Route, Switch } from 'react-router-dom';
 import AdminProtectedRoute from './AdminProtectedRoute';
-import { AdminScreen } from '../admin';
+import { AdminScreen } from '../admin/adminScreen';
 
 const Routes = () => {
   return (
