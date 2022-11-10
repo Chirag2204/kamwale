@@ -50,7 +50,8 @@ router.post(
         email,
         avatar,
         password,
-        isSeller
+        isSeller,
+        isAdmin: false
       });
 
       //Encrypt password
@@ -64,6 +65,7 @@ router.post(
       const payload = {
         user: {
           id: user.id,
+          isAdmin: false
         },
       };
 
