@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Spinner from '../layout/Spinner'
 import Modal from 'react-modal';
 import { ProfileModal } from './profileModal';
+import ProfileItem from '../profiles/ProfileItem';
 
 export const AdminScreen = () => {
     const [filter, setFilter] = useState("PENDING")
@@ -27,10 +28,10 @@ export const AdminScreen = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [filter])
     return (
-        <div>
-            <div >
-                <div className='form-text'>Verification Status</div>
-                <select name='location' value={filter} onChange={(e) => setFilter(e.target.value)}>
+        <div >
+            <div style={{ display: 'flex', alignContent: 'center', justifyContent: 'center', margin: '10px' }} >
+                <div style={{ fontSize: '35px', fontWeight: 'bold' }}>Verification Status&nbsp;&nbsp;&nbsp;</div>
+                <select style={{ fontSize: "15px", padding: '10px' }} name='location' value={filter} onChange={(e) => setFilter(e.target.value)}>
                     <option value='ALL'>ALL</option>
                     <option value='VERIFIED'>VERIFIED</option>
                     <option value='PENDING'>PENDING</option>
@@ -41,7 +42,10 @@ export const AdminScreen = () => {
                 {
                     isLoading ?
                         <Spinner />
-                        : (profiles.length === 0 ? <div>No Profile found</div> : profiles.map(profile => <div onClick={() => { setProfileId(profile.user._id); setIsModalOpen(true) }}>{profile.user.email}</div>))
+                        : (profiles.length === 0 ? <div>No Profile found</div> : profiles.map(profile =>
+                            <ProfileItem profile={profile} actionOnCardClick={() => { setProfileId(profile.user._id); setIsModalOpen(true) }} showLink={false} />
+                            // <div onClick={() => { setProfileId(profile.user._id); setIsModalOpen(true) }}>{profile.user.email}</div>
+                        ))
                 }
             </div>
 

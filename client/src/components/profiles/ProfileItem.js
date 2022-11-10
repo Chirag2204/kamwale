@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import Rating from '../layout/Rating'
 
 const ProfileItem = ({
+  actionOnCardClick,
+  showLink = true,
   profile: {
     user: { _id, name, avatar },
     image,
@@ -15,7 +17,7 @@ const ProfileItem = ({
   },
 }) => {
   return (
-    <div className='profile bg-light'>
+    <div className='profile bg-light' style={{ borderRadius: '10px' }} onClick={actionOnCardClick}>
       <div >
         <img
           src={!image ? avatar : image}
@@ -31,10 +33,10 @@ const ProfileItem = ({
         </h2>
 
         <h3 className='my'>{name}</h3>
-        <p>{price && <span> {price} €/hour</span>}</p>
-        <Link to={`/profile/${_id}`} className='btn btn-white my'>
+        <p>{price && <span> {price} ₹/hour</span>}</p>
+        {showLink && <Link to={`/profile/${_id}`} className='btn btn-white my'>
           See Details
-        </Link>
+        </Link>}
       </div>
       <div class='icons my-1 hide-sm'>
         {info && info.phone && (

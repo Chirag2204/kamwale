@@ -1,14 +1,26 @@
-import React, { Fragment } from 'react';
-import spinner from './spinner.gif';
+import React from 'react';
+import { ThreeCircles } from 'react-loader-spinner'
+
 
 const Spinner = () => (
-  <Fragment>
-    <img
-      src={spinner}
-      style={{ width: '200px', margin: 'auto', display: 'block' }}
-      alt='Loading...'
+  <div style={{
+    display: "flex",
+    height: '50%',
+    placeContent: "center"
+  }} >
+    <ThreeCircles
+      height="100"
+      width="100"
+      color="white"
+      wrapperStyle={{}}
+      wrapperClass=""
+      visible={true}
+      ariaLabel="three-circles-rotating"
+      outerCircleColor=""
+      innerCircleColor=""
+      middleCircleColor=""
     />
-  </Fragment>
+  </div>
 );
 
 export default Spinner;

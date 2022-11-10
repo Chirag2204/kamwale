@@ -33,7 +33,7 @@ const ProfileTop = ({
         <div className='profile-info'>
           <h2>{name}</h2>
 
-          <h3>Asking Price: {price} €/hour</h3>
+          <h3>Asking Price: {price} ₹/hour</h3>
           <h3>{location && <span>{location}</span>}</h3>
           <div class='icons my-1'>
             {info && info.phone && (
