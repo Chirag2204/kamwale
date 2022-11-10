@@ -57,7 +57,7 @@ const EditProfile = ({
       <h1 className='large text-primary text-center'>Edit Profile</h1>
       <h2>
         {
-          profile?.verificationStatus === 'PENDING' && <div style={{ textAlign: "center" }}>We are workgin on your profile verification</div>
+          profile?.verificationStatus === 'PENDING' && <div style={{ textAlign: "center" }}>We are working on your profile verification</div>
         }
       </h2>
       <br></br>

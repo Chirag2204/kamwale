@@ -1,9 +1,20 @@
-import React, {Fragment} from 'react'
-import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
-import {logout} from '../../actions/auth'
+import React, { Fragment } from 'react'
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logout } from '../../actions/auth'
+import { getIsAdminFromToken } from '../../utils/getAuthToken';
 
-const Navbar = ({auth: {isAuthenticated, loading, user}, logout}) => {
+const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
+  const isAdmin = getIsAdminFromToken();
+  const adminLinks = () => {
+    console.log("hi", isAdmin);
+    if (isAdmin) return (<li>
+      <Link to='/admin'>
+        <i className='fas fa-user'></i>{' '}
+        <span className='hide-sm'>Admin</span>
+      </Link>
+    </li>)
+  }
 
   const sellerLinks = (
     <ul>
@@ -54,13 +65,14 @@ const Navbar = ({auth: {isAuthenticated, loading, user}, logout}) => {
           <span className='hide-sm'>Logout</span>
         </Link>
       </li>
+      {adminLinks()}
     </ul>
   );
   const guestLinks = (
     <ul>
       <li>
         <Link to='/profiles'>
-        All Services
+          All Services
         </Link>
       </li>
       <li>
@@ -71,28 +83,28 @@ const Navbar = ({auth: {isAuthenticated, loading, user}, logout}) => {
       </li>
     </ul>
   );
-    return (
-      <nav className='navbar bg-dark'>
-        <h2 className="hide-sm">
-          <Link to='/'>Kamwale</Link>
-        </h2>
-        {!loading && (
-          <Fragment>
-            {isAuthenticated && user.isSeller ? (
-              sellerLinks
-            ) : (
-              <Fragment>
-                {isAuthenticated && !user.isSeller ? buyerLinks : guestLinks}
-              </Fragment>
-            )}
-          </Fragment>
-        )}
-      </nav>
-    );
+  return (
+    <nav className='navbar bg-dark'>
+      <h2 className="hide-sm">
+        <Link to='/'>Kamwale</Link>
+      </h2>
+      {!loading && (
+        <Fragment>
+          {isAuthenticated && user.isSeller ? (
+            sellerLinks
+          ) : (
+            <Fragment>
+              {isAuthenticated && !user.isSeller ? buyerLinks : guestLinks}
+            </Fragment>
+          )}
+        </Fragment>
+      )}
+    </nav>
+  );
 }
 
-const mapStateToProps= state=>({
+const mapStateToProps = state => ({
   auth: state.auth
 })
 
-export default connect(mapStateToProps, {logout})(Navbar)
+export default connect(mapStateToProps, { logout })(Navbar)

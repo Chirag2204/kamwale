@@ -12,6 +12,8 @@ import Profile from '../profiles/Profile';
 import Dashboard from '../dashboard/dashboard';
 import PrivateRoute from '../routing/PrivateRoute';
 import { Route, Switch } from 'react-router-dom';
+import AdminProtectedRoute from './AdminProtectedRoute';
+import { AdminScreen } from '../admin';
 
 const Routes = () => {
   return (
@@ -33,6 +35,7 @@ const Routes = () => {
         />
         <PrivateRoute exact path='/edit-profile' component={EditProfile} />
         <PrivateRoute exact path='/add-education' component={AddEducation} />
+        <AdminProtectedRoute exact path='/admin' component={AdminScreen} />
         <Route component={NotFound} />
       </Switch>
     </section>
