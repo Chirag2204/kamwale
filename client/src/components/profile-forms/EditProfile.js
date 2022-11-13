@@ -9,7 +9,7 @@ import Spinner from '../layout/Spinner';
 import { AccordionComponent } from '../components/accordion';
 
 const EditProfile = ({
-  profile: { profile, loading, updateProfileisLoading },
+  profile: { profile, loading },
   auth: { user },
   createProfile,
   getCurrentProfile,
@@ -32,7 +32,7 @@ const EditProfile = ({
   const [displayContactlInputs, toggleContactInputs] = useState(false);
 
   useEffect(() => {
-    if (!loading && !updateProfileisLoading)
+    if (!loading)
       setFormData({
         location: !profile?.location ? '' : profile?.location,
         skills: !profile?.skills ? '' : profile?.skills,
@@ -44,7 +44,7 @@ const EditProfile = ({
         policeVerificationImage: !profile?.policeVerificationImage ? '' : profile?.policeVerificationImage,
         addharImage: !profile?.addharImage ? '' : profile?.addharImage,
       });
-  }, [updateProfileisLoading, loading])
+  }, [loading])
 
   useEffect(() => {
     getCurrentProfile();
@@ -60,7 +60,7 @@ const EditProfile = ({
     createProfile(formData, history, true);
   };
 
-  return (loading || updateProfileisLoading) ? <Spinner /> : (
+  return (loading) ? <Spinner /> : (
     <Fragment>
       <h1 className='large text-primary text-center'>Edit Profile</h1>
       <h2>

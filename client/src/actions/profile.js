@@ -10,7 +10,6 @@ import {
   ACCOUNT_DELETED,
   CREATE_REVIEW,
   PROFILE_LOADING,
-  UPDATE_PROFILE_LOADING
 } from './types';
 
 // Get current users profile
@@ -72,7 +71,7 @@ export const createProfile = (formData, history, edit = false) => async (
 ) => {
   try {
     dispatch({
-      type: UPDATE_PROFILE_LOADING
+      type: PROFILE_LOADING
     })
     const config = {
       headers: {
