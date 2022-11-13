@@ -9,12 +9,16 @@ import {
   UPDATE_PROFILE,
   ACCOUNT_DELETED,
   CREATE_REVIEW,
-  PROFILE_LOADING
+  PROFILE_LOADING,
+  UPDATE_PROFILE_LOADING
 } from './types';
 
 // Get current users profile
 export const getCurrentProfile = () => async (dispatch) => {
   try {
+    dispatch({
+      type: PROFILE_LOADING
+    })
     const res = await axios.get('/api/profile/me');
     dispatch({
       type: GET_PROFILE,
@@ -68,7 +72,7 @@ export const createProfile = (formData, history, edit = false) => async (
 ) => {
   try {
     dispatch({
-      type: PROFILE_LOADING
+      type: UPDATE_PROFILE_LOADING
     })
     const config = {
       headers: {

@@ -9,7 +9,7 @@ import Spinner from '../layout/Spinner';
 import { AccordionComponent } from '../components/accordion';
 
 const EditProfile = ({
-  profile: { profile, loading },
+  profile: { profile, loading, updateProfileisLoading },
   auth: { user },
   createProfile,
   getCurrentProfile,
@@ -32,20 +32,23 @@ const EditProfile = ({
   const [displayContactlInputs, toggleContactInputs] = useState(false);
 
   useEffect(() => {
-    getCurrentProfile();
+    if (!loading && !updateProfileisLoading)
+      setFormData({
+        location: !profile?.location ? '' : profile?.location,
+        skills: !profile?.skills ? '' : profile?.skills,
+        price: !profile?.price ? '' : profile?.price,
+        bio: !profile?.bio ? '' : profile?.bio,
+        phone: !profile?.info ? '' : profile?.info?.phone,
+        email: !profile?.info ? '' : profile?.info?.email,
+        image: !profile?.image ? '' : profile?.image,
+        policeVerificationImage: !profile?.policeVerificationImage ? '' : profile?.policeVerificationImage,
+        addharImage: !profile?.addharImage ? '' : profile?.addharImage,
+      });
+  }, [updateProfileisLoading, loading])
 
-    setFormData({
-      location: loading || !profile?.location ? '' : profile?.location,
-      skills: loading || !profile?.skills ? '' : profile?.skills,
-      price: loading || !profile?.price ? '' : profile?.price,
-      bio: loading || !profile?.bio ? '' : profile?.bio,
-      phone: loading || !profile?.info ? '' : profile?.info?.phone,
-      email: loading || !profile?.info ? '' : profile?.info?.email,
-      image: loading || !profile?.image ? '' : profile?.image,
-      policeVerificationImage: loading || !profile?.policeVerificationImage ? '' : profile?.policeVerificationImage,
-      addharImage: loading || !profile?.addharImage ? '' : profile?.addharImage,
-    });
-  }, [loading, getCurrentProfile]);
+  useEffect(() => {
+    getCurrentProfile();
+  }, []);
 
   const { price, location, skills, bio, phone, email, image, policeVerificationImage, addharImage } = formData;
 
@@ -57,7 +60,7 @@ const EditProfile = ({
     createProfile(formData, history, true);
   };
 
-  return loading ? <Spinner /> : (
+  return (loading || updateProfileisLoading) ? <Spinner /> : (
     <Fragment>
       <h1 className='large text-primary text-center'>Edit Profile</h1>
       <h2>
