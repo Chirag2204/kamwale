@@ -14,11 +14,13 @@ const CreateProfile = ({ createProfile, history, auth: { user } }) => {
     phone: '',
     email: '',
     image: '',
+    policeVerificationImage: '',
+    addharImage: ''
   });
 
-  const [displayContactlInputs, toggleContactInputs] = useState(false);
+  const [displayContactlInputs, toggleContactInputs] = useState(true);
 
-  const { price, location, skills, bio, phone, email, image } = formData;
+  const { price, location, skills, bio, phone, email } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -64,16 +66,6 @@ const CreateProfile = ({ createProfile, history, auth: { user } }) => {
             onChange={(e) => onChange(e)}
           />
         </div>
-        {/* 
-        <div className='form-group'>
-          <div className='form-text'>*City (eg. Espoo, Lohja etc)</div>
-          <input
-            type='text'
-            name='location'
-            value={location}
-            onChange={(e) => onChange(e)}
-          />
-        </div> */}
 
         <div className='form-group'>
           <div className='form-text'>*Service Location (eg. Indore, Pune, Bangalore etc)</div>
@@ -144,68 +136,34 @@ const CreateProfile = ({ createProfile, history, auth: { user } }) => {
             />
           </label>
         </div>
-        {/* 
-        <div className='text-center'>{' OR'}</div>
-        <div className='form-text my-1 text-center'>Choose an avatar image</div>
-        <div class='grid-container'>
-          <div class='grid-item'>
-            <img className='round-img avatar-img' src='./images/1.png' alt='' />
-            <p>Avatar 1</p>
-          </div>
-          <div class='grid-item'>
-            <img className='round-img avatar-img' src='./images/2.png' alt='' />
-            <p>Avatar 2</p>
-          </div>
-          <div class='grid-item'>
-            <img className='round-img avatar-img' src='./images/3.png' alt='' />
-            <p>Avatar 3</p>
-          </div>
-          <div class='grid-item'>
-            <img className='round-img avatar-img' src='./images/4.png' alt='' />
-            <p>Avatar 4</p>
-          </div>
-          <div class='grid-item'>
-            <img className='round-img avatar-img' src='./images/5.png' alt='' />
-            <p>Avatar 5</p>
-          </div>
-          <div class='grid-item'>
-            <img className='round-img avatar-img' src='./images/6.png' alt='' />
-            <p>Avatar 6</p>
-          </div>
-          <div class='grid-item'>
-            <img className='round-img avatar-img' src='./images/7.png' alt='' />
-            <p>Avatar 7</p>
-          </div>
-          <div class='grid-item'>
-            <img className='round-img avatar-img' src='./images/8.png' alt='' />
-            <p>Avatar 8</p>
-          </div>
-          <div class='grid-item'>
-            <img className='round-img avatar-img' src='./images/9.png' alt='' />
-            <p>Avatar 9</p>
-          </div>
+
+        <div className='form-group text-center'>
+          <label className='form-text text-center'>
+            Add Your Addhar Card Image for profile varification (Clear and Both side):{' '}
+            <FileBase
+              id='addhar image'
+              type='file'
+              multiple={false}
+              onDone={({ base64 }) =>
+                setFormData({ ...formData, addharImage: base64 })
+              }
+            />
+          </label>
         </div>
 
-        <div className='form-group'>
-          <select
-            type='text'
-            placeholder='Image'
-            name='image'
-            value={image}
-            onChange={(e) => onChange(e)}
-          >
-            <option value='0'>Choose an image.</option>
-            <option value='/images/1.png'>Avatar1</option>
-            <option value='/images/2.png'>Avatar2 </option>
-            <option value='/images/3.png'>Avatar3</option>
-            <option value='/images/4.png'>Avatar4</option>
-            <option value='/images/5.png'>Avatar5</option>
-            <option value='/images/6.png'>Avatar6</option>
-            <option value='/images/7.png'>Avatar7</option>
-            <option value='/images/8.png'>Avatar 8</option>
-            <option value='/images/9.png'>Avatar 9</option>
-          </select>
-        </div> */}
+        <div className='form-group text-center'>
+          <label className='form-text text-center'>
+            Add Your Police Verification Image for profile varification (Clear):{' '}
+            <FileBase
+              id='police verification'
+              type='file'
+              multiple={false}
+              onDone={({ base64 }) =>
+                setFormData({ ...formData, policeVerificationImage: base64 })
+              }
+            />
+          </label>
+        </div>
 
         <input type='submit' className='btn btn-primary my-1' />
 

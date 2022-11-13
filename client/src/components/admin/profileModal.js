@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { Fragment, useEffect, useState } from 'react'
+import { AccordionComponent } from '../components/accordion'
 import Education from '../dashboard/Education'
 import Spinner from '../layout/Spinner'
 
@@ -7,7 +8,7 @@ export const ProfileModal = ({ profileId, refreshFunction }) => {
 
     const [isLoading, setIsLoading] = useState(false)
     const [profile, setProfile] = useState(null)
-    const [displayContactlInputs, toggleContactInputs] = useState(false);
+    const [displayContactlInputs, toggleContactInputs] = useState(true);
 
     const changeProfileStatus = async (verificationStatus) => {
         setIsLoading(true)
@@ -105,6 +106,9 @@ export const ProfileModal = ({ profileId, refreshFunction }) => {
                                     rows='5'
                                 />
                             </div>
+                            <AccordionComponent title='Addhar Card' imageSrc={profile?.addharImage} />
+                            <br></br>
+                            <AccordionComponent title='Police Verification Documents' imageSrc={profile?.policeVerificationImage} />
 
                             <div className='my-2'>
                                 <button

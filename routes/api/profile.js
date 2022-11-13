@@ -75,6 +75,11 @@ router.post(
       check('location', 'Location is required').not().isEmpty(),
       check('skills', 'Skills is required').not().isEmpty(),
       check('price', 'Price is required').not().isEmpty(),
+      check('policeVerificationImage', 'Police verification image is required').not().isEmpty(),
+      check('addharImage', 'Addhar Card is required').not().isEmpty(),
+      check('image', 'Profile Image is required').not().isEmpty(),
+      check('email', 'Email is required').not().isEmpty(),
+      check('phone', 'Phone is required').not().isEmpty(),
     ],
   ],
   async (req, res) => {
@@ -91,6 +96,8 @@ router.post(
       phone,
       email,
       image,
+      policeVerificationImage,
+      addharImage,
       rating,
       numReviews
     } = req.body;
@@ -105,6 +112,8 @@ router.post(
     if (skills) profileFields.skills = skills;
     if (rating) profileFields.rating = rating;
     if (numReviews) profileFields.numReviews = numReviews;
+    if (policeVerificationImage) profileFields.policeVerificationImage = policeVerificationImage;
+    if (addharImage) profileFields.addharImage = addharImage;
 
     // Build social object
     profileFields.info = {};

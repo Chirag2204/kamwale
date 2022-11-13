@@ -25,6 +25,12 @@ const ProfileSchema = new mongoose.Schema({
   image: {
     type: String,
   },
+  addharImage: {
+    type: String,
+  },
+  policeVerificationImage: {
+    type: String,
+  },
   bio: {
     type: String,
   },

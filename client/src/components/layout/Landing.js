@@ -14,14 +14,6 @@ const Landing = () => {
             Baby-sitting.
           </p>
           <Route render={({ history }) => <SearchBox history={history} />} />
-          <div className='buttons'>
-            <Link to='/profiles' className='btn btn-primary'>
-              Buy Services
-            </Link>
-            <a href='/register' className='btn btn-light'>
-              Sell Services
-            </a>
-          </div>
         </div>
       </div>
     </section>

@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { createProfile, getCurrentProfile, deleteAccount } from '../../actions/profile';
 import Education from '../dashboard/Education'
 import Spinner from '../layout/Spinner';
+import { AccordionComponent } from '../components/accordion';
 
 const EditProfile = ({
   profile: { profile, loading },
@@ -23,7 +24,9 @@ const EditProfile = ({
     bio: '',
     phone: '',
     email: '',
-    image: ''
+    image: '',
+    policeVerificationImage: '',
+    addharImage: ''
   });
 
   const [displayContactlInputs, toggleContactInputs] = useState(false);
@@ -39,10 +42,12 @@ const EditProfile = ({
       phone: loading || !profile?.info ? '' : profile?.info?.phone,
       email: loading || !profile?.info ? '' : profile?.info?.email,
       image: loading || !profile?.image ? '' : profile?.image,
+      policeVerificationImage: loading || !profile?.policeVerificationImage ? '' : profile?.policeVerificationImage,
+      addharImage: loading || !profile?.addharImage ? '' : profile?.addharImage,
     });
   }, [loading, getCurrentProfile]);
 
-  const { price, location, skills, bio, phone, email, image } = formData;
+  const { price, location, skills, bio, phone, email, image, policeVerificationImage, addharImage } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -51,7 +56,7 @@ const EditProfile = ({
     e.preventDefault();
     createProfile(formData, history, true);
   };
-  console.log(loading);
+
   return loading ? <Spinner /> : (
     <Fragment>
       <h1 className='large text-primary text-center'>Edit Profile</h1>
@@ -191,6 +196,42 @@ const EditProfile = ({
           </div>
 
           <Education education={profile?.education} />
+
+          <div className='form-group text-center'>
+            <label className='form-text text-center'>
+              Add Your Addhar Card Image for profile varification (Clear and Both side):{' '}
+              <FileBase
+                id='addhar image'
+                type='file'
+                multiple={false}
+                onDone={({ base64 }) =>
+                  setFormData({ ...formData, addharImage: base64 })
+                }
+              />
+            </label>
+          </div>
+          <AccordionComponent
+            title='Addhar Card'
+            imageSrc={addharImage}
+          />
+          <br></br>
+          <div className='form-group text-center'>
+            <label className='form-text text-center'>
+              Add Your Police Verification Image for profile varification (Clear):{' '}
+              <FileBase
+                id='police verification'
+                type='file'
+                multiple={false}
+                onDone={({ base64 }) =>
+                  setFormData({ ...formData, policeVerificationImage: base64 })
+                }
+              />
+            </label>
+          </div>
+          <AccordionComponent
+            title='Police Verification Image'
+            imageSrc={policeVerificationImage}
+          />
         </div>
         <input type='submit' className='btn btn-primary my-1' />
       </form>
