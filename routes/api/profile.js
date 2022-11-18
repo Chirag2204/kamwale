@@ -5,6 +5,7 @@ const { check, validationResult } = require('express-validator');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const { isAdmin, admin } = require('../../middleware/admin');
+const { sendMailServiceForAfterVerification } = require('../../services/mailService');
 
 // @route    GET api/profile/me
 // @desc     Get current users profile
@@ -51,10 +52,14 @@ router.get('/admin/user/:user_id', admin, async (req, res) => {
 
 router.post('/admin/user', admin, async (req, res) => {
   try {
-    await Profile.updateOne({
+    const userDetails = await Profile.findOneAndUpdate({
       user: req.body.userId,
     }, { verificationStatus: req.body.verificationStatus });
-
+    console.log(req.body.verificationStatus);
+    if (userDetails.info.email && req.body.verificationStatus === 'VERIFIED') {
+      console.log(userDetails.info.email)
+      sendMailServiceForAfterVerification(userDetails.info.email)
+    }
     res.send("UPDATED");
   } catch (err) {
     console.error(err.message);
