@@ -4,7 +4,6 @@ const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
-const { VapingRoomsRounded } = require('@mui/icons-material');
 const { isAdmin, admin } = require('../../middleware/admin');
 
 // @route    GET api/profile/me
