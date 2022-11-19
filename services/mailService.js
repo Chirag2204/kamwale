@@ -6,6 +6,14 @@ const sendMailServiceForAfterVerification = (email) => {
     sendMailService(email, body, body, body)
 }
 
+const sendMailServiceForAfterRejection = (email) => {
+    console.log("HELLO");
+    var body = 'CONGO BHAI YOU ARE VERIFIED'
+    sendMailService(email, body, body, body)
+}
+
+
+const rejectHtml = ``
 
 
 const sendMailService = (to, subject, text, html) => {
@@ -26,5 +34,6 @@ const sendMailService = (to, subject, text, html) => {
 
 
 module.exports = {
-    sendMailServiceForAfterVerification
+    sendMailServiceForAfterVerification,
+    sendMailServiceForAfterRejection
 }
