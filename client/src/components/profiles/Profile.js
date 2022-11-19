@@ -11,17 +11,17 @@ import { getProfileById } from '../../actions/profile';
 
 const Profile = ({
   getProfileById,
-  profile: { profile },
+  profile: { profile, loading },
   auth,
   match,
 }) => {
   useEffect(() => {
     getProfileById(match.params.id);
-  }, [getProfileById, match.params.id]);
+  }, []);
 
   return (
     <Fragment>
-      {profile === null? (
+      {profile === null || loading ? (
         <Spinner />
       ) : (
         <Fragment>

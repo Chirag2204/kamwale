@@ -51,6 +51,7 @@ export const getProfiles = (keyword = '', city = '') => async (dispatch) => {
 // Get profile by ID
 export const getProfileById = userId => async dispatch => {
   try {
+    dispatch({ type: PROFILE_LOADING })
     const res = await axios.get(`/api/profile/user/${userId}`);
 
     dispatch({

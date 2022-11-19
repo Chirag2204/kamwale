@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Rating from '../layout/Rating'
+import { LocationBadges } from './LocationBadges';
 
 const ProfileItem = ({
   actionOnCardClick,
   showLink = true,
   profile: {
     user: { _id, name, avatar },
+    locationArray = {},
     image,
     price,
     info,
@@ -31,6 +33,7 @@ const ProfileItem = ({
         <h2>
           {skills} services in {location}
         </h2>
+        <LocationBadges locationArray={locationArray} />
 
         <h3 className='my'>{name}</h3>
         <p>{price && <span> {price} ₹/hour</span>}</p>

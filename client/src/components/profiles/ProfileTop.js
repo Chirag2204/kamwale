@@ -1,8 +1,10 @@
 import React from 'react';
+import { LocationBadges } from './LocationBadges';
 
 const ProfileTop = ({
   profile: {
     location,
+    locationArray = {},
     skills,
     info,
     price,
@@ -34,7 +36,9 @@ const ProfileTop = ({
           <h2>{name}</h2>
 
           <h3>Asking Price: {price} ₹/hour</h3>
-          <h3>{location && <span>{location}</span>}</h3>
+          <span style={{ fontSize: '25px', fontWeight: 700 }}>{location}  </span>
+          <LocationBadges locationArray={locationArray} />
+          {/* <LocationBadges locationArray={locationArray} /> */}
           <div class='icons my-1'>
             {info && info.phone && (
               <p>

@@ -95,6 +95,23 @@ export const ProfileModal = ({ profileId, refreshFunction }) => {
                                 </select>
                             </div>
 
+                            <div>
+                                {profile?.locationArray && <><div>Locations in {profile.location}</div>
+                                    <div style={{
+                                        display: "flex",
+                                        flexWrap: "wrap"
+                                    }}>
+                                        {Object.keys(profile.locationArray).map(locationName => {
+                                            return <div style={{ flexGrow: "1" }}>
+                                                <input type="checkbox" id="locationArray" name="locationArray" value={locationName} checked={profile.locationArray[locationName]}
+                                                />
+                                                <label for="locationArray">{locationName}</label><br></br>
+                                            </div>
+                                        })}
+                                    </div>
+                                </>}
+                            </div>
+
                             <div className='form-group'>
                                 <div className='form-text'>
                                     A brief description of yours services
