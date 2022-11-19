@@ -5,6 +5,7 @@ const ProfileTop = ({
   profile: {
     location,
     locationArray = {},
+    skillArray = {},
     skills,
     info,
     price,
@@ -39,6 +40,10 @@ const ProfileTop = ({
           <span style={{ fontSize: '25px', fontWeight: 700 }}>{location}  </span>
           <LocationBadges locationArray={locationArray} />
           {/* <LocationBadges locationArray={locationArray} /> */}
+          <br></br>
+          <br></br>
+          <div>Special skills</div>
+          <LocationBadges locationArray={skillArray} />
           <div class='icons my-1'>
             {info && info.phone && (
               <p>

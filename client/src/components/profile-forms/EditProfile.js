@@ -7,7 +7,7 @@ import { createProfile, getCurrentProfile, deleteAccount } from '../../actions/p
 import Education from '../dashboard/Education'
 import Spinner from '../layout/Spinner';
 import { AccordionComponent } from '../components/accordion';
-import { locationMap } from './constant';
+import { locationMap, skillMap } from './constant';
 
 const EditProfile = ({
   profile: { profile, loading },
@@ -28,7 +28,8 @@ const EditProfile = ({
     image: '',
     policeVerificationImage: '',
     addharImage: '',
-    locationArray: {}
+    locationArray: {},
+    skillArray: {}
   });
 
   const [displayContactlInputs, toggleContactInputs] = useState(false);
@@ -46,6 +47,7 @@ const EditProfile = ({
         policeVerificationImage: !profile?.policeVerificationImage ? '' : profile?.policeVerificationImage,
         addharImage: !profile?.addharImage ? '' : profile?.addharImage,
         locationArray: !profile?.locationArray ? {} : profile?.locationArray,
+        skillArray: !profile?.skillArray ? {} : profile?.skillArray,
       });
   }, [loading])
 
@@ -55,15 +57,25 @@ const EditProfile = ({
     getCurrentProfile();
   }, []);
 
-  const { price, location, skills, bio, phone, email, image, policeVerificationImage, addharImage, locationArray } = formData;
+  const { price, location, skills, bio, phone, email, image, policeVerificationImage, addharImage, locationArray, skillArray } = formData;
 
   const onChangeLocationArray = (name, value) => {
     setFormData({ ...formData, locationArray: { ...locationArray, [name]: value } });
   }
 
+
+  const onChangeSkillArray = (name, value) => {
+    setFormData({ ...formData, skillArray: { ...skillArray, [name]: value } });
+  }
+
   const onChange = (e) => {
     if (e.target.name === 'location') {
       setFormData({ ...formData, [e.target.name]: e.target.value, locationArray: locationMap[e.target.value] });
+      return
+    }
+
+    if (e.target.name === 'skills') {
+      setFormData({ ...formData, [e.target.name]: e.target.value, skillArray: skillMap[e.target.value] });
       return
     }
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -137,6 +149,22 @@ const EditProfile = ({
               <option value='Other'>Other</option>
             </select>
           </div>
+
+          {skills && <div>
+            <div>Sub Skills of {skills}</div>
+            <div style={{
+              display: "flex",
+              flexWrap: "wrap"
+            }}>
+              {Object.keys(skillArray).map(skillName => {
+                return <div style={{ flexGrow: "1" }}>
+                  <input type="checkbox" id="skillArray" name="skillArray" value={skillName} checked={skillArray[skillName]}
+                    onChange={(e) => { onChangeSkillArray(skillName, 0 + e.target.checked) }} />
+                  <label for="skillArray">{skillName}</label><br></br>
+                </div>
+              })}
+            </div>
+          </div>}
 
           <div className='form-group'>
             <div className='form-text'>*Price you wanna ask(per hour).</div>

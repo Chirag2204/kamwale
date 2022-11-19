@@ -52,6 +52,10 @@ const ProfileSchema = new mongoose.Schema({
     required: true,
   },
 
+  skillArray: {
+    type: Map,
+    required: true,
+  },
   reviews: [reviewSchema],
   verificationStatus: {
     type: String,

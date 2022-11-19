@@ -3,6 +3,7 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { AccordionComponent } from '../components/accordion'
 import Education from '../dashboard/Education'
 import Spinner from '../layout/Spinner'
+import { LocationBadges } from '../profiles/LocationBadges'
 
 export const ProfileModal = ({ profileId, refreshFunction }) => {
 
@@ -75,6 +76,9 @@ export const ProfileModal = ({ profileId, refreshFunction }) => {
                                     <option value='Other'>Other</option>
                                 </select>
                             </div>
+
+                            <div>Special skills</div>
+                            <LocationBadges locationArray={profile.skillArray} />
 
                             <div className='form-group'>
                                 <div className='form-text'>*Price you wanna ask(per hour).</div>

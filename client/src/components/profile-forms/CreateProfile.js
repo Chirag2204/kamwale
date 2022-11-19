@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import FileBase from 'react-file-base64';
 import { connect } from 'react-redux';
 import { createProfile } from '../../actions/profile'
-import { locationMap } from './constant';
+import { locationMap, skillMap } from './constant';
 
 const CreateProfile = ({ createProfile, history, auth: { user } }) => {
   const [formData, setFormData] = useState({
@@ -17,7 +17,8 @@ const CreateProfile = ({ createProfile, history, auth: { user } }) => {
     image: '',
     policeVerificationImage: '',
     addharImage: '',
-    locationArray: locationMap['Indore']
+    locationArray: locationMap['Indore'],
+    skillArray: {}
   });
 
   const [displayContactlInputs, toggleContactInputs] = useState(true);
@@ -25,11 +26,16 @@ const CreateProfile = ({ createProfile, history, auth: { user } }) => {
 
 
 
-  const { price, location, skills, bio, phone, email, locationArray } = formData;
+  const { price, location, skills, bio, phone, email, locationArray, skillArray } = formData;
 
   const onChange = (e) => {
     if (e.target.name === 'location') {
       setFormData({ ...formData, [e.target.name]: e.target.value, locationArray: locationMap[e.target.value] });
+      return
+    }
+
+    if (e.target.name === 'skills') {
+      setFormData({ ...formData, [e.target.name]: e.target.value, skillArray: skillMap[e.target.value] });
       return
     }
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -40,13 +46,15 @@ const CreateProfile = ({ createProfile, history, auth: { user } }) => {
   }
 
 
+  const onChangeSkillArray = (name, value) => {
+    setFormData({ ...formData, skillArray: { ...skillArray, [name]: value } });
+  }
+
+
   const onSumbit = (e) => {
     e.preventDefault();
     createProfile(formData, history);
   };
-
-  console.log(formData.locationArray);
-
   return (
     <Fragment>
       <h1 className='large text-primary'>Create Profile</h1>
@@ -75,6 +83,23 @@ const CreateProfile = ({ createProfile, history, auth: { user } }) => {
             <option value='Other'>Other</option>
           </select>
         </div>
+
+        {skills && <div>
+          <div>Sub Skills of {skills}</div>
+          <div style={{
+            display: "flex",
+            flexWrap: "wrap"
+          }}>
+            {Object.keys(skillArray).map(skillName => {
+              return <div style={{ flexGrow: "1" }}>
+                <input type="checkbox" id="skillArray" name="skillArray" value={skillName} checked={skillArray[skillName]}
+                  onChange={(e) => { onChangeSkillArray(skillName, 0 + e.target.checked) }} />
+                <label for="skillArray">{skillName}</label><br></br>
+              </div>
+            })}
+          </div>
+        </div>}
+
         <div className='form-group'>
           <div className='form-text'>*Price you wanna ask(per hour).</div>
           <input

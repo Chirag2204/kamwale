@@ -105,7 +105,8 @@ router.post(
       addharImage,
       rating,
       numReviews,
-      locationArray
+      locationArray,
+      skillArray
     } = req.body;
 
     // Build profile object
@@ -121,6 +122,7 @@ router.post(
     if (policeVerificationImage) profileFields.policeVerificationImage = policeVerificationImage;
     if (addharImage) profileFields.addharImage = addharImage;
     if (locationArray) profileFields.locationArray = locationArray;
+    if (skillArray) profileFields.skillArray = skillArray;
 
     // Build social object
     profileFields.info = {};

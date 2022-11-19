@@ -91,11 +91,11 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
       </h2>
       {!loading && (
         <Fragment>
-          {isAuthenticated && user.isSeller ? (
+          {isAuthenticated && user?.isSeller ? (
             sellerLinks
           ) : (
             <Fragment>
-              {isAuthenticated && !user.isSeller ? buyerLinks : guestLinks}
+              {isAuthenticated && !user?.isSeller ? buyerLinks : guestLinks}
             </Fragment>
           )}
         </Fragment>
