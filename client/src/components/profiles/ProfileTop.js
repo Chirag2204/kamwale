@@ -11,8 +11,8 @@ const ProfileTop = ({
   },
 }) => {
   return (
-    <div class='profile-top bg-light p-2'>
-      <div className='py-1 medium'>
+    <div class='profile-top bg-light' style={{ padding: '10px', borderRadius: '10px' }}>
+      <div >
         {skills.map((skill, index) => (
           <div key={index}>
             {' '}

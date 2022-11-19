@@ -20,7 +20,6 @@ const Login = ({ login, auth }) => {
     e.preventDefault();
     login(email, password)
   };
-
   //redirect if logged in
   if (isAdmin) {
     return <Redirect to='/admin' />;
