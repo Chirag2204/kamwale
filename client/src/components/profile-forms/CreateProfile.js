@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import FileBase from 'react-file-base64';
 import { connect } from 'react-redux';
 import { createProfile } from '../../actions/profile'
+import { locationMap } from './constant';
 
 const CreateProfile = ({ createProfile, history, auth: { user } }) => {
   const [formData, setFormData] = useState({
@@ -15,20 +16,37 @@ const CreateProfile = ({ createProfile, history, auth: { user } }) => {
     email: '',
     image: '',
     policeVerificationImage: '',
-    addharImage: ''
+    addharImage: '',
+    locationArray: locationMap['Indore']
   });
 
   const [displayContactlInputs, toggleContactInputs] = useState(true);
 
-  const { price, location, skills, bio, phone, email } = formData;
 
-  const onChange = (e) =>
+
+
+  const { price, location, skills, bio, phone, email, locationArray } = formData;
+
+  const onChange = (e) => {
+    if (e.target.name === 'location') {
+      setFormData({ ...formData, [e.target.name]: e.target.value, locationArray: locationMap[e.target.value] });
+      return
+    }
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  }
+
+  const onChangeLocationArray = (name, value) => {
+    setFormData({ ...formData, locationArray: { ...locationArray, [name]: value } });
+  }
+
 
   const onSumbit = (e) => {
     e.preventDefault();
     createProfile(formData, history);
   };
+
+  console.log(formData.locationArray);
+
   return (
     <Fragment>
       <h1 className='large text-primary'>Create Profile</h1>
@@ -74,6 +92,22 @@ const CreateProfile = ({ createProfile, history, auth: { user } }) => {
             <option value='Pune'>Pune</option>
             <option value='Bangalore'>Bangalore</option>
           </select>
+        </div>
+
+        <div>
+          <div>Locations in {location}</div>
+          <div style={{
+            display: "flex",
+            flexWrap: "wrap"
+          }}>
+            {Object.keys(locationArray).map(locationName => {
+              return <div style={{ flexGrow: "1" }}>
+                <input type="checkbox" id="locationArray" name="locationArray" value={locationName} checked={locationArray[locationName]}
+                  onChange={(e) => { onChangeLocationArray(locationName, 0 + e.target.checked) }} />
+                <label for="locationArray">{locationName}</label><br></br>
+              </div>
+            })}
+          </div>
         </div>
 
         <div className='form-group'>

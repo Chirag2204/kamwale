@@ -47,6 +47,11 @@ const ProfileSchema = new mongoose.Schema({
     required: true,
   },
 
+  locationArray: {
+    type: Map,
+    required: true,
+  },
+
   reviews: [reviewSchema],
   verificationStatus: {
     type: String,
