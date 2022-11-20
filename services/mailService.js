@@ -1,5 +1,4 @@
 const nodemailer = require("nodemailer");
-
 const sendMailServiceForAfterVerification = (email) => {
     console.log("HELLO");
     var body = 'CONGO BHAI YOU ARE VERIFIED'
