@@ -19,7 +19,6 @@ const ProfileItem = ({
     numReviews,
   },
 }) => {
-  console.log(info);
   return (
     <div onClick={actionOnCardClick} style={{
       "boxShadow": "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
@@ -31,7 +30,7 @@ const ProfileItem = ({
       "fontFamily": "arial", color: 'black',
       background: 'white', position: "relative"
     }}>
-      <div style={{ position: "absolute", top: '30px', paddingLeft: "10px" }}>
+      <div style={{ position: "absolute", top: '310px', paddingLeft: "10px" }}>
         <Rating value={rating} text={numReviews} />
       </div>
       <img

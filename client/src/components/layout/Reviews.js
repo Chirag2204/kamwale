@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
-import { createSellerReview,  } from '../../actions/profile';
+import { createSellerReview, } from '../../actions/profile';
 import Rating from '../layout/Rating'
 
 const Reviews = ({
@@ -24,19 +24,24 @@ const Reviews = ({
       rating,
       comment,
     }, history);
-    
+
     window.location.reload();
   };
   return (
-    <div className=' bg-secondary profile-reviews'>
+    <div style={{
+      background: "white", color: "black", padding: "10px",
+      borderRadius: '10px', margin: '10px',
+    }}>
       <Fragment>
         {profile.reviews.length === 0 && <h4>No Reviews</h4>}
         <div className='profile-edu bg-white p-2'>
           <h2 className='text-primary'>Reviews</h2>
           {profile.reviews.map((review) => (
-            <div key={review._id}>
-              <h3>{review.name}</h3>
-              <Rating value={review.rating} />
+            <div key={review._id} >
+              <div style={{ display: "flex" }}>
+                <h3>{review.name}</h3>
+                (<Rating value={review.rating} />)
+              </div>
               <p class="small"
               >{review.createdAt.substring(0, 10)}</p>
               <p>{review.comment}</p>

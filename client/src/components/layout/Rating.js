@@ -18,7 +18,7 @@ const Rating = ({ value, text, color }) => {
           className={'fas fa-star'}
         ></i>
       </span>
-      <span>&nbsp;{value}&nbsp;|&nbsp;{text}&nbsp;</span>
+      <span>&nbsp;{value}&nbsp;{text && text !== '' && '|'}&nbsp;{text}&nbsp;</span>
     </div >
   );
 };

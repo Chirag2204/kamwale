@@ -1,3 +1,11 @@
+export const gg = {
+    "Sarafa": 1,
+    "Vijay Nagar": 1,
+    "South Tukoganj": 1,
+    "Bhawar Kuan": 1,
+    "Old Palasia": 1,
+    "New Palasia": 1,
+}
 export const locationMap = {
     'Indore': {
         "Sarafa": 0,
@@ -87,8 +95,8 @@ export const skillMap = {
         icon: <i className='fas fa fa-child fa-2x' />,
         array: {
             "Baby sitting and Nanny ": 0,
-            "Prepare healty meals":0,
-            "light housework":0,
+            "Prepare healty meals": 0,
+            "light housework": 0,
 
         }
     },
@@ -160,17 +168,17 @@ export const skillMap = {
     "House Keeping": {
         icon: <i className='fas fa fa-male fa-2x' />,
         array: {
-            "Cleaner or Maid":0,
-            "Cook":0,
-            "Live in HouseKeeper":0,
-            "Live out HouseKeeper":0,
+            "Cleaner or Maid": 0,
+            "Cook": 0,
+            "Live in HouseKeeper": 0,
+            "Live out HouseKeeper": 0,
         }
     },
     "Tutoring": {
         icon: <i className='fas fa fa-book fa-2x' />,
         array: {
-            "Tutoring":0,
-            "exam prep":0,
+            "Tutoring": 0,
+            "exam prep": 0,
         }
     },
     "Electrical Services": {
@@ -190,50 +198,50 @@ export const skillMap = {
     "Moving and delivery": {
         icon: <i className='fas fa fa-truck fa-2x' />,
         array: {
-            "House Shifting":0,
-            "packing and unpacking":0,
-            "Transporting":0
+            "House Shifting": 0,
+            "packing and unpacking": 0,
+            "Transporting": 0
         }
     },
     "Salon for Women": {
         icon: null,
         array: {
-            "Threading and facewax":0,
-            "Bleach and detan":0,
-            "Cut and Style":0,
-            "Blowdry and styling":0,
-            "spa and massage":0,
-            "Anti frizz and keratin":0,
-            "Maintenance Color":0,
-            "Fashion Color":0,
+            "Threading and facewax": 0,
+            "Bleach and detan": 0,
+            "Cut and Style": 0,
+            "Blowdry and styling": 0,
+            "spa and massage": 0,
+            "Anti frizz and keratin": 0,
+            "Maintenance Color": 0,
+            "Fashion Color": 0,
         }
     },
-    "Salon for Men":{
-        icon:null,
-        array:{
-            "Haircut for Men and Kids":0,
-            "Haircolor":0,
-            "Shave/Beard Grooming":0,
-            "Detan and facials":0
+    "Salon for Men": {
+        icon: null,
+        array: {
+            "Haircut for Men and Kids": 0,
+            "Haircolor": 0,
+            "Shave/Beard Grooming": 0,
+            "Detan and facials": 0
         }
     },
-    "Message and Therapies":{
-        icon:null,
-        array:{
-            "Head Massage":0,
-            "Neck and Shoulder Massage":0,
-            "Hair strengthening Head Massage":0,
-            "Kids Head Massage":0,
-            "Top to Toe therapy":0,
-            "Pain Relief Therapy":0,
+    "Message and Therapies": {
+        icon: null,
+        array: {
+            "Head Massage": 0,
+            "Neck and Shoulder Massage": 0,
+            "Hair strengthening Head Massage": 0,
+            "Kids Head Massage": 0,
+            "Top to Toe therapy": 0,
+            "Pain Relief Therapy": 0,
         }
     },
-    "Application Repair and service":{
-        icon:null,
-        array:{
-            "Repair":0,
-            "installation and uninstallation":0,
-            "Service CheckUp":0,
+    "Application Repair and service": {
+        icon: null,
+        array: {
+            "Repair": 0,
+            "installation and uninstallation": 0,
+            "Service CheckUp": 0,
         }
     }
 }
