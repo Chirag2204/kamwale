@@ -1,69 +1,83 @@
-import React, { Fragment } from 'react'
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { logout } from '../../actions/auth'
-import { getIsAdminFromToken } from '../../utils/getAuthToken';
+import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { logout } from "../../actions/auth";
+import { getIsAdminFromToken } from "../../utils/getAuthToken";
 
 const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
   const isAdmin = getIsAdminFromToken();
   const adminLinks = () => {
-    if (isAdmin) return (<li>
-      <Link to='/admin'>
-        <i className='fas fa-user'></i>{' '}
-        <span className='hide-sm'>Admin</span>
-      </Link>
-    </li>)
-  }
+    if (isAdmin)
+      return (
+        <li>
+          <Link to="/admin">
+            <i className="fas fa-user"></i>{" "}
+            <span className="hide-sm">Admin</span>
+          </Link>
+        </li>
+      );
+  };
 
   const sellerLinks = (
     <ul>
       <li>
-        <Link to='/profiles'>
-          <i className='fas fa-home'></i>{' '}
-          <span className='hide-sm'>All Services</span>
+        <Link to="/profiles">
+          <i className="fas fa-home"></i>{" "}
+          <span className="hide-sm">All Services</span>
         </Link>
       </li>
       <li>
-        <Link to='/dashboard'>
-          <i className='fas fa-user'></i>{' '}
-          <span className='hide-sm'>My Profile</span>
+        <Link to="/dashboard">
+          <i className="fas fa-user"></i>{" "}
+          <span className="hide-sm">My Profile</span>
         </Link>
       </li>
       <li>
-        <Link to='/'>
-          <i className='fas fa-search'></i>{' '}
-          <span className='hide-sm'>Search</span>
+        <Link to="/">
+          <i className="fas fa-search"></i>{" "}
+          <span className="hide-sm">Search</span>
         </Link>
       </li>
       <li>
-        <Link to='#!' onClick={logout}>
-          <i className='fas fa-sign-out-alt'></i>{' '}
-          <span className='hide-sm'>Logout</span>
+        <Link to="/about">
+          <i className="fa-solid fa-info"></i>{" "}
+          <span className="hide-sm">About</span>
+        </Link>
+      </li>
+      <li>
+        <Link to="#!" onClick={logout}>
+          <i className="fas fa-sign-out-alt"></i>{" "}
+          <span className="hide-sm">Logout</span>
         </Link>
       </li>
       {adminLinks()}
-
     </ul>
   );
 
   const buyerLinks = (
     <ul>
       <li>
-        <Link to='/profiles'>
-          <i className='fas fa-home'></i>{' '}
-          <span className='hide-sm'>All Services</span>
+        <Link to="/profiles">
+          <i className="fas fa-home"></i>{" "}
+          <span className="hide-sm">All Services</span>
         </Link>
       </li>
       <li>
-        <Link to='/'>
-          <i className='fas fa-search'></i>{' '}
-          <span className='hide-sm'>Search</span>
+        <Link to="/about">
+          <i className="fa-solid fa-info"></i>{" "}
+          <span className="hide-sm">About</span>
         </Link>
       </li>
       <li>
-        <Link to='#!' onClick={logout}>
-          <i className='fas fa-sign-out-alt'></i>{' '}
-          <span className='hide-sm'>Logout</span>
+        <Link to="/">
+          <i className="fas fa-search"></i>{" "}
+          <span className="hide-sm">Search</span>
+        </Link>
+      </li>
+      <li>
+        <Link to="#!" onClick={logout}>
+          <i className="fas fa-sign-out-alt"></i>{" "}
+          <span className="hide-sm">Logout</span>
         </Link>
       </li>
       {adminLinks()}
@@ -72,22 +86,24 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
   const guestLinks = (
     <ul>
       <li>
-        <Link to='/profiles'>
-          All Services
+        <Link to="/profiles">All Services</Link>
+      </li>
+      <li>
+        <Link to="/about">About
         </Link>
       </li>
       <li>
-        <Link to='/register'>Register</Link>
-      </li>
+        <Link to="/register">Register</Link>
+      </li> 
       <li>
-        <Link to='/login'>Login</Link>
+        <Link to="/login">Login</Link>
       </li>
     </ul>
   );
   return (
-    <nav className='navbar bg-dark'>
+    <nav className="navbar bg-dark">
       <h2 className="hide-sm">
-        <Link to='/'>Kamwale</Link>
+        <Link to="/">Kamwale</Link>
       </h2>
       {!loading && (
         <Fragment>
@@ -102,10 +118,10 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
       )}
     </nav>
   );
-}
+};
 
-const mapStateToProps = state => ({
-  auth: state.auth
-})
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
 
-export default connect(mapStateToProps, { logout })(Navbar)
+export default connect(mapStateToProps, { logout })(Navbar);

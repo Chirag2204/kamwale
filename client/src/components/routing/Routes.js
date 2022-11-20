@@ -10,6 +10,7 @@ import AddEducation from '../profile-forms/AddEducation';
 import Profiles from '../profiles/Profiles';
 import Profile from '../profiles/Profile';
 import Dashboard from '../dashboard/dashboard';
+import About from '../about/about';
 import PrivateRoute from '../routing/PrivateRoute';
 import { Route, Switch } from 'react-router-dom';
 import AdminProtectedRoute from './AdminProtectedRoute';
@@ -27,6 +28,7 @@ const Routes = () => {
         <Route path='/search/:keyword/:city' component={Profiles} />
         <Route path='/search/:keyword' component={Profiles} />
         <Route exact path='/profile/:id' component={Profile} />
+        <Route exact path='/about' component={About} />
         <PrivateRoute exact path='/dashboard' component={Dashboard} />
         <PrivateRoute
           exact
