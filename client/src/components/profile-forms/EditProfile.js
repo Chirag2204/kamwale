@@ -159,7 +159,7 @@ const EditProfile = ({
               flexWrap: "wrap"
             }}>
               {Object.keys(skillArray).map(skillName => {
-                return <div style={{ flexGrow: "1" }}>
+                return <div style={{ minWidth: "200px" }}>
                   <input type="checkbox" id="skillArray" name="skillArray" value={skillName} checked={skillArray[skillName]}
                     onChange={(e) => { onChangeSkillArray(skillName, 0 + e.target.checked) }} />
                   <label for="skillArray">{skillName}</label><br></br>
@@ -195,7 +195,7 @@ const EditProfile = ({
               flexWrap: "wrap"
             }}>
               {Object.keys(locationArray).map(locationName => {
-                return <div style={{ flexGrow: "1" }}>
+                return <div style={{ minWidth: "200px" }}>
                   <input type="checkbox" id="locationArray" name="locationArray" value={locationName} checked={locationArray[locationName]}
                     onChange={(e) => { onChangeLocationArray(locationName, 0 + e.target.checked) }} />
                   <label for="locationArray">{locationName}</label><br></br>

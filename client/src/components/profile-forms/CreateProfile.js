@@ -70,17 +70,12 @@ const CreateProfile = ({ createProfile, history, auth: { user } }) => {
           </div>
           <select name='skills' value={skills} onChange={(e) => onChange(e)}>
             <option value='0'>Select the Service you want to provide.</option>
-            <option value='Baby sitting'>Baby sitting</option>
-            <option value='Plumbing'>Plumbing</option>
-            <option value='House Keeping'>House Keeping</option>
-            <option value='Tutoring'>Tutoring</option>
-            <option value='Electrical'>Electrical Services</option>
-            <option value='Moving and delivery'>Moving and delivery</option>
-            <option value='Personal Care'>
-              Personal Care(like haicut, manicure)
-            </option>
-            <option value='Catering'>Catering Services</option>
-            <option value='Other'>Other</option>
+            {
+              Object.keys(skillMap).map(skillName => {
+                return <option value={skillName}>{skillName}</option>
+
+              })
+            }
           </select>
         </div>
 
@@ -91,7 +86,7 @@ const CreateProfile = ({ createProfile, history, auth: { user } }) => {
             flexWrap: "wrap"
           }}>
             {Object.keys(skillArray).map(skillName => {
-              return <div style={{ flexGrow: "1" }}>
+              return <div style={{ minWidth: "200px" }}>
                 <input type="checkbox" id="skillArray" name="skillArray" value={skillName} checked={skillArray[skillName]}
                   onChange={(e) => { onChangeSkillArray(skillName, 0 + e.target.checked) }} />
                 <label for="skillArray">{skillName}</label><br></br>
@@ -126,7 +121,7 @@ const CreateProfile = ({ createProfile, history, auth: { user } }) => {
             flexWrap: "wrap"
           }}>
             {Object.keys(locationArray).map(locationName => {
-              return <div style={{ flexGrow: "1" }}>
+              return <div style={{ minWidth: "200px" }}>
                 <input type="checkbox" id="locationArray" name="locationArray" value={locationName} checked={locationArray[locationName]}
                   onChange={(e) => { onChangeLocationArray(locationName, 0 + e.target.checked) }} />
                 <label for="locationArray">{locationName}</label><br></br>
