@@ -2,14 +2,10 @@ import React, { Fragment, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ProfileTop from './ProfileTop';
-import ProfileAbout from './ProfileAbout';
 import ProfileEducation from './ProfileEducation';
 import Reviews from '../layout/Reviews';
 import Spinner from '../layout/Spinner';
 import { getProfileById } from '../../actions/profile';
-import { LocationBadges } from './LocationBadges';
-import { gg } from '../profile-forms/constant';
-import Rating from '../layout/Rating';
 
 
 const Profile = ({

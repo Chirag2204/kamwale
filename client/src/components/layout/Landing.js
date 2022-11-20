@@ -27,7 +27,7 @@ const Landing = ({ history }) => {
               textAlign: "center",
               "left": "50%",
               "marginRight": "-50%",
-              "transform": "translate(-50%, -50%)"
+              "transform": "translate(-50%, -50%)", display: "flex"
             }}>{skillMap[serviceName].icon}&nbsp;{serviceName}&nbsp;
             </p></div>
           })

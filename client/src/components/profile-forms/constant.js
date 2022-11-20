@@ -1,11 +1,12 @@
-export const gg = {
-    "Sarafa": 1,
-    "Vijay Nagar": 1,
-    "South Tukoganj": 1,
-    "Bhawar Kuan": 1,
-    "Old Palasia": 1,
-    "New Palasia": 1,
-}
+import { MdCarpenter, MdPlumbing, MdCleaningServices } from 'react-icons/md'
+import { FaBabyCarriage } from 'react-icons/fa'
+import { GiSofa, GiHospitalCross, GiAutoRepair } from 'react-icons/gi'
+import { TbBugOff, TbPlug } from 'react-icons/tb'
+import { SiAdguard } from 'react-icons/si'
+import { TfiBlackboard } from 'react-icons/tfi'
+import { GoPackage } from 'react-icons/go'
+import { SlUserFemale } from 'react-icons/sl'
+import { BiMale } from 'react-icons/bi'
 export const locationMap = {
     'Indore': {
         "Sarafa": 0,
@@ -92,7 +93,7 @@ export const locationMap = {
 
 export const skillMap = {
     'Baby sitting': {
-        icon: <i className='fas fa fa-child fa-2x' />,
+        icon: <FaBabyCarriage size={'40'} />,
         array: {
             "Baby sitting and Nanny ": 0,
             "Prepare healty meals": 0,
@@ -101,7 +102,7 @@ export const skillMap = {
         }
     },
     "Plumbing": {
-        icon: <i className='fas fa fa-bath fa-2x' />,
+        icon: <MdPlumbing size={'40'} />,
         array: {
             "Basin & sink": 0,
             "Grouting": 0,
@@ -116,7 +117,7 @@ export const skillMap = {
         }
     },
     "Carpenters": {
-        icon: <i className='fas fa fa-bath fa-2x' />,
+        icon: <MdCarpenter size={'40'} />,
         array: {
             "Balcony": 0,
             "Bed": 0,
@@ -132,7 +133,7 @@ export const skillMap = {
         }
     },
     "Bathroom and Kitchen Cleaning": {
-        icon: <i className='fas fa fa-male fa-2x' />,
+        icon: <MdCleaningServices size={'40'} />,
         array: {
             "Bathroom cleaning": 0,
             "Kitchen cleaning": 0,
@@ -141,7 +142,7 @@ export const skillMap = {
         }
     },
     "Full Home Cleaning": {
-        icon: <i className='fas fa fa-male fa-2x' />,
+        icon: <MdCleaningServices size={'40'} />,
         array: {
             "Apartment Deep Cleaning": 0,
             "Villa Deep Cleaning": 0,
@@ -150,7 +151,7 @@ export const skillMap = {
         }
     },
     "Sofa & Carpet Cleaning": {
-        icon: <i className='fas fa fa-male fa-2x' />,
+        icon: <GiSofa size={'40'} />,
         array: {
             "Sofa Cleaning": 0,
             "Carpet Cleaning": 0,
@@ -159,14 +160,13 @@ export const skillMap = {
         }
     },
     "Disinfection Services": {
-        icon: <i className='fas fa fa-male fa-2x' />,
+        icon: <TbBugOff size={'40'} />,
         array: {
             "All Disinfection Services": 0,
         }
     },
-
     "House Keeping": {
-        icon: <i className='fas fa fa-male fa-2x' />,
+        icon: <SiAdguard size={'40'} />,
         array: {
             "Cleaner or Maid": 0,
             "Cook": 0,
@@ -175,14 +175,14 @@ export const skillMap = {
         }
     },
     "Tutoring": {
-        icon: <i className='fas fa fa-book fa-2x' />,
+        icon: <TfiBlackboard size={'40'} />,
         array: {
             "Tutoring": 0,
             "exam prep": 0,
         }
     },
     "Electrical Services": {
-        icon: <i className='fas fa fa-bolt fa-2x' />,
+        icon: <TbPlug size={'40'} />,
         array: {
             "Diwali Lights": 0,
             "Switch & socket": 0,
@@ -196,7 +196,7 @@ export const skillMap = {
         }
     },
     "Moving and delivery": {
-        icon: <i className='fas fa fa-truck fa-2x' />,
+        icon: <GoPackage size={'40'} />,
         array: {
             "House Shifting": 0,
             "packing and unpacking": 0,
@@ -204,7 +204,7 @@ export const skillMap = {
         }
     },
     "Salon for Women": {
-        icon: null,
+        icon: <SlUserFemale size={'40'} />,
         array: {
             "Threading and facewax": 0,
             "Bleach and detan": 0,
@@ -217,7 +217,7 @@ export const skillMap = {
         }
     },
     "Salon for Men": {
-        icon: null,
+        icon: <BiMale size={'40'} />,
         array: {
             "Haircut for Men and Kids": 0,
             "Haircolor": 0,
@@ -226,7 +226,7 @@ export const skillMap = {
         }
     },
     "Message and Therapies": {
-        icon: null,
+        icon: <GiHospitalCross size={'40'} />,
         array: {
             "Head Massage": 0,
             "Neck and Shoulder Massage": 0,
@@ -237,7 +237,7 @@ export const skillMap = {
         }
     },
     "Application Repair and service": {
-        icon: null,
+        icon: <GiAutoRepair size={'40'} />,
         array: {
             "Repair": 0,
             "installation and uninstallation": 0,

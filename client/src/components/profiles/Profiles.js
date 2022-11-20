@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import ProfileItem from './ProfileItem';
 import { getProfiles, getCurrentProfile } from '../../actions/profile';
+import { skillMap } from '../profile-forms/constant';
 
 const Profiles = ({ history, getProfiles, getCurrentProfile, profile: { profile, profiles, loading }, match }) => {
 
@@ -14,7 +15,7 @@ const Profiles = ({ history, getProfiles, getCurrentProfile, profile: { profile,
 
   return (
     <Fragment>
-      <h1 className='large text-primary text-center'>{keyword || 'All'} Services {city && `in ${city}`} </h1>
+      <h1 className='large text-primary text-center'>{keyword || 'All'} Services {city && `in ${city}`} {keyword && skillMap[keyword].icon} </h1>
       <p className='lead text-center'>
         <i className='fab fa-connectdevelop' /> Browse one step solution for
         all your Service needs

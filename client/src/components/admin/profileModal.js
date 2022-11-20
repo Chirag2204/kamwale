@@ -43,7 +43,7 @@ export const ProfileModal = ({ profileId, refreshFunction }) => {
 
     return (
 
-        <div style={{ color: 'white', background: '#333', padding: '50px' }}>
+        <div style={{ color: 'white', background: '#333', padding: '10px' }}>
             {
                 isLoading ? <Spinner /> : profile && <div>
                     <div className='text-center'>
@@ -98,23 +98,7 @@ export const ProfileModal = ({ profileId, refreshFunction }) => {
                                     <option value='Bangalore'>Bangalore</option>
                                 </select>
                             </div>
-
-                            <div>
-                                {profile?.locationArray && <><div>Locations in {profile.location}</div>
-                                    <div style={{
-                                        display: "flex",
-                                        flexWrap: "wrap"
-                                    }}>
-                                        {Object.keys(profile.locationArray).map(locationName => {
-                                            return <div style={{ flexGrow: "1" }}>
-                                                <input type="checkbox" id="locationArray" name="locationArray" value={locationName} checked={profile.locationArray[locationName]}
-                                                />
-                                                <label for="locationArray">{locationName}</label><br></br>
-                                            </div>
-                                        })}
-                                    </div>
-                                </>}
-                            </div>
+                            <LocationBadges locationArray={profile.locationArray} />
 
                             <div className='form-group'>
                                 <div className='form-text'>

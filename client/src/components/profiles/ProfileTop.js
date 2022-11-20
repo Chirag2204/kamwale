@@ -1,6 +1,6 @@
 import React from 'react';
 import Rating from '../layout/Rating';
-import { gg } from '../profile-forms/constant';
+import { skillMap } from '../profile-forms/constant';
 import { LocationBadges } from './LocationBadges';
 
 const ProfileTop = ({
@@ -51,7 +51,7 @@ const ProfileTop = ({
           {bio}        </div>
         <div>
           <div style={{ fontSize: "25px", color: "gray", display: "flex", alignItems: "center" }}>Service Provided:
-            <span style={{ fontSize: "25px", color: "black", fontWeight: 900 }}> {skills} </span>
+            <span style={{ fontSize: "25px", color: "black", fontWeight: 900, display: "flex" }}> {skills} {skills && skillMap[skills].icon}</span>
           </div>
           <div>
             <LocationBadges locationArray={skillArray} />

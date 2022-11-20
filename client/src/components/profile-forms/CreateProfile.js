@@ -86,7 +86,7 @@ const CreateProfile = ({ createProfile, history, auth: { user } }) => {
             flexWrap: "wrap"
           }}>
             {Object.keys(skillArray).map(skillName => {
-              return <div style={{ minWidth: "200px" }}>
+              return <div style={{ minWidth: "150px", textAlign: 'left' }}>
                 <input type="checkbox" id="skillArray" name="skillArray" value={skillName} checked={skillArray[skillName]}
                   onChange={(e) => { onChangeSkillArray(skillName, 0 + e.target.checked) }} />
                 <label for="skillArray">{skillName}</label><br></br>
@@ -121,7 +121,7 @@ const CreateProfile = ({ createProfile, history, auth: { user } }) => {
             flexWrap: "wrap"
           }}>
             {Object.keys(locationArray).map(locationName => {
-              return <div style={{ minWidth: "200px" }}>
+              return <div style={{ minWidth: "150px", textAlign: 'left' }}>
                 <input type="checkbox" id="locationArray" name="locationArray" value={locationName} checked={locationArray[locationName]}
                   onChange={(e) => { onChangeLocationArray(locationName, 0 + e.target.checked) }} />
                 <label for="locationArray">{locationName}</label><br></br>
