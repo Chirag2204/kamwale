@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const config = require('config');
 
 
 const UWITELISTED_URL = [
@@ -17,7 +16,7 @@ function admin(req, res, next) {
 
     // Verify token
     try {
-        const decoded = jwt.verify(token, config.get('jwtSecret'));
+        const decoded = jwt.verify(token, process.env.JWT_SECERET);
         if (decoded.user.isAdmin) {
             req.user = decoded.user;
             next();
@@ -41,7 +40,7 @@ function isAdmin(req, res, next) {
     }
 
     try {
-        const decoded = jwt.verify(token, config.get('jwtSecret'));
+        const decoded = jwt.verify(token, process.env.JWT_SECERET);
         req.user = decoded.user;
         next();
     } catch (err) {

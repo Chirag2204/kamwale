@@ -55,12 +55,12 @@ router.post('/admin/user', admin, async (req, res) => {
     const userDetails = await Profile.findOneAndUpdate({
       user: req.body.userId,
     }, { verificationStatus: req.body.verificationStatus });
-    console.log(req.body.verificationStatus);
-    if (userDetails.info.email && req.body.verificationStatus === 'VERIFIED') {
-      sendMailServiceForAfterVerification(userDetails.info.email)
-    } else if (userDetails.info.email && req.body.verificationStatus === 'REJECTED') {
-      sendMailServiceForAfterRejection(userDetails.info.email)
-    }
+    // console.log(req.body.verificationStatus);
+    // if (userDetails.info.email && req.body.verificationStatus === 'VERIFIED') {
+    //   sendMailServiceForAfterVerification(userDetails.info.email)
+    // } else if (userDetails.info.email && req.body.verificationStatus === 'REJECTED') {
+    //   sendMailServiceForAfterRejection(userDetails.info.email)
+    // }
     res.send("UPDATED");
   } catch (err) {
     console.error(err.message);
