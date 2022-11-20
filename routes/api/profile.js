@@ -5,7 +5,7 @@ const { check, validationResult } = require('express-validator');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const { isAdmin, admin } = require('../../middleware/admin');
-const { sendMailServiceForAfterVerification } = require('../../services/mailService');
+const { sendMailServiceForAfterVerification, sendMailServiceForAfterRejection } = require('../../services/mailService');
 
 // @route    GET api/profile/me
 // @desc     Get current users profile
@@ -57,8 +57,9 @@ router.post('/admin/user', admin, async (req, res) => {
     }, { verificationStatus: req.body.verificationStatus });
     console.log(req.body.verificationStatus);
     if (userDetails.info.email && req.body.verificationStatus === 'VERIFIED') {
-      console.log(userDetails.info.email)
       sendMailServiceForAfterVerification(userDetails.info.email)
+    } else if (userDetails.info.email && req.body.verificationStatus === 'REJECTED') {
+      sendMailServiceForAfterRejection(userDetails.info.email)
     }
     res.send("UPDATED");
   } catch (err) {
@@ -103,7 +104,9 @@ router.post(
       policeVerificationImage,
       addharImage,
       rating,
-      numReviews
+      numReviews,
+      locationArray,
+      skillArray
     } = req.body;
 
     // Build profile object
@@ -118,6 +121,8 @@ router.post(
     if (numReviews) profileFields.numReviews = numReviews;
     if (policeVerificationImage) profileFields.policeVerificationImage = policeVerificationImage;
     if (addharImage) profileFields.addharImage = addharImage;
+    if (locationArray) profileFields.locationArray = locationArray;
+    if (skillArray) profileFields.skillArray = skillArray;
 
     // Build social object
     profileFields.info = {};

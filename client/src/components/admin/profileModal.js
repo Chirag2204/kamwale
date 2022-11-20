@@ -3,6 +3,7 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { AccordionComponent } from '../components/accordion'
 import Education from '../dashboard/Education'
 import Spinner from '../layout/Spinner'
+import { LocationBadges } from '../profiles/LocationBadges'
 
 export const ProfileModal = ({ profileId, refreshFunction }) => {
 
@@ -76,6 +77,9 @@ export const ProfileModal = ({ profileId, refreshFunction }) => {
                                 </select>
                             </div>
 
+                            <div>Special skills</div>
+                            <LocationBadges locationArray={profile.skillArray} />
+
                             <div className='form-group'>
                                 <div className='form-text'>*Price you wanna ask(per hour).</div>
                                 <input
@@ -93,6 +97,23 @@ export const ProfileModal = ({ profileId, refreshFunction }) => {
                                     <option value='Pune'>Pune</option>
                                     <option value='Bangalore'>Bangalore</option>
                                 </select>
+                            </div>
+
+                            <div>
+                                {profile?.locationArray && <><div>Locations in {profile.location}</div>
+                                    <div style={{
+                                        display: "flex",
+                                        flexWrap: "wrap"
+                                    }}>
+                                        {Object.keys(profile.locationArray).map(locationName => {
+                                            return <div style={{ flexGrow: "1" }}>
+                                                <input type="checkbox" id="locationArray" name="locationArray" value={locationName} checked={profile.locationArray[locationName]}
+                                                />
+                                                <label for="locationArray">{locationName}</label><br></br>
+                                            </div>
+                                        })}
+                                    </div>
+                                </>}
                             </div>
 
                             <div className='form-group'>

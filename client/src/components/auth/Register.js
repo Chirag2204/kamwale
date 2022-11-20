@@ -15,7 +15,10 @@ const Register = ({ setAlert, register, auth }) => {
 
   const { name, email, password, password2, isSeller } = formData;
 
-  const changeHandler = e => setFormData({ ...formData, [e.target.name]: e.target.value })
+  const changeHandler = e => {
+    console.log(e.target.value, e.target.name);
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
 
   const submitHandler = async e => {
     e.preventDefault();
@@ -26,9 +29,12 @@ const Register = ({ setAlert, register, auth }) => {
     }
   }
   if (auth.isAuthenticated) {
-    if (isSeller)
-      return <Redirect to='/create-profile' />;
-    return <Redirect to='/profiles' />;
+    if (isSeller === 'true') {
+      return <Redirect to='/create-profile' />
+    }
+    else {
+      return <Redirect to='/profiles' />
+    }
   }
   return (
     <Fragment>
