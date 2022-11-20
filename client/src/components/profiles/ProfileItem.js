@@ -23,7 +23,7 @@ const ProfileItem = ({
   return (
     <div onClick={actionOnCardClick} style={{
       "boxShadow": "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
-      "maxWidth": "500px",
+      "maxWidth": "400px",
       flex: "1",
       "minWidth": "300px",
       "margin": "20px",

@@ -6,7 +6,7 @@ import { skillMap } from '../profile-forms/constant';
 
 
 
-const Landing = () => {
+const Landing = ({ history }) => {
   return <section className='landing'>
     <div className='dark-overlay'>
       <h1 className='large' style={{ textAlign: "center", margin: "20px" }}>Kamwale</h1>
@@ -19,7 +19,7 @@ const Landing = () => {
       }}>
         {
           Object.keys(skillMap).map(serviceName => {
-            return <div className='landingCard'><p style={{
+            return <div className='landingCard' onClick={() => { history.push(`/search/${serviceName}`) }}><p style={{
               "margin": "0",
               color: "white",
               "position": "absolute", fontSize: '25px', fontWeight: 700,
