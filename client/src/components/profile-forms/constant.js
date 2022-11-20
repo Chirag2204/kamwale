@@ -17,10 +17,10 @@ export const skillMap = {
     'Baby sitting': {
         icon: <i className='fas fa fa-child fa-2x' />,
         array: {
-            "Baby sitting ": 0,
-            "Si2d": 0,
-            "Baby sitting 3": 0,
-            "Baby sitting 4": 0,
+            "Baby sitting and Nanny ": 0,
+            "Prepare healty meals":0,
+            "light housework":0,
+
         }
     },
     "Plumbing": {
@@ -91,19 +91,17 @@ export const skillMap = {
     "House Keeping": {
         icon: <i className='fas fa fa-male fa-2x' />,
         array: {
-            "Baby sitting ": 0,
-            "Si2d": 0,
-            "Baby sitting 3": 0,
-            "Baby sitting 4": 0,
+            "Cleaner or Maid":0,
+            "Cook":0,
+            "Live in HouseKeeper":0,
+            "Live out HouseKeeper":0,
         }
     },
     "Tutoring": {
         icon: <i className='fas fa fa-book fa-2x' />,
         array: {
-            "Baby sitting ": 0,
-            "Si2d": 0,
-            "Baby sitting 3": 0,
-            "Baby sitting 4": 0,
+            "Tutoring":0,
+            "exam prep":0,
         }
     },
     "Electrical Services": {
@@ -123,19 +121,50 @@ export const skillMap = {
     "Moving and delivery": {
         icon: <i className='fas fa fa-truck fa-2x' />,
         array: {
-            "Baby sitting ": 0,
-            "Si2d": 0,
-            "Baby sitting 3": 0,
-            "Baby sitting 4": 0,
+            "House Shifting":0,
+            "packing and unpacking":0,
+            "Transporting":0
         }
     },
-    "Personal Care": {
+    "Salon for Women": {
         icon: null,
         array: {
-            "Baby sitting ": 0,
-            "Si2d": 0,
-            "Baby sitting 3": 0,
-            "Baby sitting 4": 0,
+            "Threading and facewax":0,
+            "Bleach and detan":0,
+            "Cut and Style":0,
+            "Blowdry and styling":0,
+            "spa and massage":0,
+            "Anti frizz and keratin":0,
+            "Maintenance Color":0,
+            "Fashion Color":0,
+        }
+    },
+    "Salon for Men":{
+        icon:null,
+        array:{
+            "Haircut for Men and Kids":0,
+            "Haircolor":0,
+            "Shave/Beard Grooming":0,
+            "Detan and facials":0
+        }
+    },
+    "Message and Therapies":{
+        icon:null,
+        array:{
+            "Head Massage":0,
+            "Neck and Shoulder Massage":0,
+            "Hair strengthening Head Massage":0,
+            "Kids Head Massage":0,
+            "Top to Toe therapy":0,
+            "Pain Relief Therapy":0,
+        }
+    },
+    "Application Repair and service":{
+        icon:null,
+        array:{
+            "Repair":0,
+            "installation and uninstallation":0,
+            "Service CheckUp":0,
         }
     }
 }
