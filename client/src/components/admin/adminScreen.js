@@ -38,7 +38,10 @@ export const AdminScreen = () => {
                     <option value='REJECTED'>REJECTED</option>
                 </select>
             </div>
-            <div>
+            <div style={{
+                display: "flex",
+                flexWrap: "wrap",
+            }}>
                 {
                     isLoading ?
                         <Spinner />
