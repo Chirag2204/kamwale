@@ -15,45 +15,66 @@ export const locationMap = {
 
 export const skillMap = {
     'Baby sitting': {
-        "Baby sitting ": 0,
-        "Si2d": 0,
-        "Baby sitting 3": 0,
-        "Baby sitting 4": 0,
+        icon: <i className='fas fa fa-child fa-2x' />,
+        array: {
+            "Baby sitting ": 0,
+            "Si2d": 0,
+            "Baby sitting 3": 0,
+            "Baby sitting 4": 0,
+        }
     },
     "Plumbing": {
-        'Plumbing  ': 0,
-        'Plumbing  2': 0,
-        'Plumbing  3': 0,
-        'Plumbing  4': 0,
+        icon: <i className='fas fa fa-bath fa-2x' />,
+        array: {
+            "Baby sitting ": 0,
+            "Si2d": 0,
+            "Baby sitting 3": 0,
+            "Baby sitting 4": 0,
+        }
     },
     "House Keeping": {
-        'Plumbing  ': 0,
-        'Plumbing  2': 0,
-        'Plumbing  3': 0,
-        'Plumbing  4': 0,
+        icon: <i className='fas fa fa-male fa-2x' />,
+        array: {
+            "Baby sitting ": 0,
+            "Si2d": 0,
+            "Baby sitting 3": 0,
+            "Baby sitting 4": 0,
+        }
     },
     "Tutoring": {
-        'Plumbing  ': 0,
-        'Plumbing  2': 0,
-        'Plumbing  3': 0,
-        'Plumbing  4': 0,
+        icon: <i className='fas fa fa-book fa-2x' />,
+        array: {
+            "Baby sitting ": 0,
+            "Si2d": 0,
+            "Baby sitting 3": 0,
+            "Baby sitting 4": 0,
+        }
     },
     "Electrical Services": {
-        'Plumbing  ': 0,
-        'Plumbing  2': 0,
-        'Plumbing  3': 0,
-        'Plumbing  4': 0,
+        icon: <i className='fas fa fa-bolt fa-2x' />,
+        array: {
+            "Baby sitting ": 0,
+            "Si2d": 0,
+            "Baby sitting 3": 0,
+            "Baby sitting 4": 0,
+        }
     },
     "Moving and delivery": {
-        'Plumbing  ': 0,
-        'Plumbing  2': 0,
-        'Plumbing  3': 0,
-        'Plumbing  4': 0,
+        icon: <i className='fas fa fa-truck fa-2x' />,
+        array: {
+            "Baby sitting ": 0,
+            "Si2d": 0,
+            "Baby sitting 3": 0,
+            "Baby sitting 4": 0,
+        }
     },
     "Personal Care": {
-        'Plumbing  ': 0,
-        'Plumbing  2': 0,
-        'Plumbing  3': 0,
-        'Plumbing  4': 0,
+        icon: null,
+        array: {
+            "Baby sitting ": 0,
+            "Si2d": 0,
+            "Baby sitting 3": 0,
+            "Baby sitting 4": 0,
+        }
     }
 }

@@ -31,12 +31,12 @@ const ProfileItem = ({
       "fontFamily": "arial", color: 'black',
       background: 'white', position: "relative"
     }}>
-      <div style={{ position: "absolute", top: '30px', paddingLeft: "10px", zIndex: 100 }}>
+      <div style={{ position: "absolute", top: '30px', paddingLeft: "10px" }}>
         <Rating value={rating} text={numReviews} />
       </div>
       <img
         src={!image ? avatar : image}
-        alt='' style={{ width: "100%", height: "350px" }}
+        alt='' style={{ width: "100%", height: "350px", zIndex: -1 }}
       />
       <div style={{ padding: '20px', paddingTop: "0px", }}>
         <div style={{ display: 'flex', justifyContent: "space-between", fontSize: "22px", color: "gray" }}>

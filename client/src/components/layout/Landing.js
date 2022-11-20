@@ -28,7 +28,8 @@ const Landing = () => {
               "left": "50%",
               "marginRight": "-50%",
               "transform": "translate(-50%, -50%)"
-            }}>{serviceName}</p></div>
+            }}>{skillMap[serviceName].icon}&nbsp;{serviceName}&nbsp;
+            </p></div>
           })
         }
       </div>

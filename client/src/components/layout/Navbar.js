@@ -40,7 +40,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
       </li>
       <li>
         <Link to="/about">
-          <i className="fa-solid fa-info"></i>{" "}
+          <i className="fa  fa-info-circle"></i>{" "}
           <span className="hide-sm">About</span>
         </Link>
       </li>
@@ -64,7 +64,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
       </li>
       <li>
         <Link to="/about">
-          <i className="fa-solid fa-info"></i>{" "}
+          <i className="fa  fa-info-circle"></i>{" "}
           <span className="hide-sm">About</span>
         </Link>
       </li>
@@ -94,7 +94,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
       </li>
       <li>
         <Link to="/register">Register</Link>
-      </li> 
+      </li>
       <li>
         <Link to="/login">Login</Link>
       </li>

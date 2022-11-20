@@ -77,7 +77,7 @@ const EditProfile = ({
     }
 
     if (e.target.name === 'skills') {
-      setFormData({ ...formData, [e.target.name]: e.target.value, skillArray: skillMap[e.target.value] });
+      setFormData({ ...formData, [e.target.name]: e.target.value, skillArray: skillMap[e.target.value].array });
       return
     }
     setFormData({ ...formData, [e.target.name]: e.target.value });
