@@ -49,12 +49,14 @@ const EditProfile = ({
         locationArray: !profile?.locationArray ? {} : profile?.locationArray,
         skillArray: !profile?.skillArray ? {} : profile?.skillArray,
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading])
 
 
 
   useEffect(() => {
     getCurrentProfile();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { price, location, skills, bio, phone, email, image, policeVerificationImage, addharImage, locationArray, skillArray } = formData;
@@ -107,7 +109,7 @@ const EditProfile = ({
         <img
           class='round-img avatar-img my-1'
           src={!image ? profile?.user?.avatar : image}
-          alt='profile-image'
+          alt=''
         />
       </div>
 

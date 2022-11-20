@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import ProfileItem from './ProfileItem';
 import { getProfiles, getCurrentProfile } from '../../actions/profile';
-import { useHistory, useLocation } from 'react-router-dom';
 
 const Profiles = ({ getProfiles, getCurrentProfile, profile: { profile, profiles, loading }, match }) => {
 

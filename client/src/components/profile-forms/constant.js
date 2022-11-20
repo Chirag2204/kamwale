@@ -25,5 +25,35 @@ export const skillMap = {
         'Plumbing  2': 0,
         'Plumbing  3': 0,
         'Plumbing  4': 0,
+    },
+    "House Keeping": {
+        'Plumbing  ': 0,
+        'Plumbing  2': 0,
+        'Plumbing  3': 0,
+        'Plumbing  4': 0,
+    },
+    "Tutoring": {
+        'Plumbing  ': 0,
+        'Plumbing  2': 0,
+        'Plumbing  3': 0,
+        'Plumbing  4': 0,
+    },
+    "Electrical Services": {
+        'Plumbing  ': 0,
+        'Plumbing  2': 0,
+        'Plumbing  3': 0,
+        'Plumbing  4': 0,
+    },
+    "Moving and delivery": {
+        'Plumbing  ': 0,
+        'Plumbing  2': 0,
+        'Plumbing  3': 0,
+        'Plumbing  4': 0,
+    },
+    "Personal Care": {
+        'Plumbing  ': 0,
+        'Plumbing  2': 0,
+        'Plumbing  3': 0,
+        'Plumbing  4': 0,
     }
 }

@@ -31,7 +31,7 @@ const ProfileItem = ({
       "fontFamily": "arial", color: 'black',
       background: 'white', position: "relative"
     }}>
-      <div style={{ position: "absolute", top: '310px', paddingLeft: "10px", zIndex: 100 }}>
+      <div style={{ position: "absolute", top: '30px', paddingLeft: "10px", zIndex: 100 }}>
         <Rating value={rating} text={numReviews} />
       </div>
       <img
