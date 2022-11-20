@@ -13,6 +13,9 @@ app.use(express.json({ limit: '30mb', extended: true }));
 
 
 // Define Routes
+app.get('/api/test', (req, res) => {
+    return res.send("API WORKING")
+})
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/profile', require('./routes/api/profile'));
