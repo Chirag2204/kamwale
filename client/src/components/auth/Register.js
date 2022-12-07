@@ -16,7 +16,6 @@ const Register = ({ setAlert, register, auth }) => {
   const { name, email, password, password2, isSeller } = formData;
 
   const changeHandler = e => {
-    console.log(e.target.value, e.target.name);
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 

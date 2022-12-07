@@ -3,13 +3,10 @@ const { getVerificationEmail } = require("../views/mailers/verifiedProfileEmail"
 
 const sendMailServiceForAfterVerification = (email) => {
     var body = 'KamWala Profile Verified'
-    console.log("HERE");
-    console.log(getVerificationEmail());
     sendMailService(email, body, body, body)
 }
 
 const sendMailServiceForAfterRejection = (email) => {
-    console.log("HELLO");
     var body = 'CONGO BHAI YOU ARE VERIFIED'
     sendMailService(email, body, body, body)
 }
@@ -17,8 +14,6 @@ const sendMailServiceForAfterRejection = (email) => {
 
 const sendMailService = async (to, subject, text, html) => {
     try {
-        console.log("TO:", to);
-        console.log(process.env.EMAIL);
         var transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
@@ -31,7 +26,6 @@ const sendMailService = async (to, subject, text, html) => {
             from: "dummymail2204@gmail.com",
             to, subject, text, html
         });
-        console.log(response)
     } catch (error) {
         console.log(error);
     }

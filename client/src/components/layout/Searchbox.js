@@ -16,7 +16,6 @@ const Searchbox = ({ history }) => {
       history.push('/');
     }
   };
-  console.log(keywordCity);
 
   return (
     <form class='form search' onSubmit={submitHandler}>
