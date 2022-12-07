@@ -75,7 +75,7 @@ export const locationMap = {
         // "Yelahanka": 0,
         // "Majestic": 0,
         "Kanakapura Road": 0,
-        "R.T. Nagar": 0,
+        // "R.T. Nagar": 0,
         "Kadugodi": 0,
         "Marathahalli": 0,
         "Rajarajeshwari Nagar": 0,
